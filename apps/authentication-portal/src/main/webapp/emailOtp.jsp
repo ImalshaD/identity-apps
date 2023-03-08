@@ -155,6 +155,8 @@
                             <div class="align-right buttons">
                                 <%
                                     if ("true".equals(authenticationFailed)) {
+                                        String authFailureMsg = request.getParameter("authFailureMsg");
+                                        if (!"token.expired.email.sent".equals(authFailureMsg)) {
                                 %>
                                 <a 
                                     class="ui button secondary" 
@@ -163,7 +165,7 @@
                                     onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()"
                                 id="resend"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "resend.code")%>
                                 </a>
-                                <% } %>
+                                <% } }%>
                                 <input type="button" name="authenticate" id="authenticate"
                                     value="<%=AuthenticationEndpointUtil.i18n(resourceBundle, "authenticate")%>"
                                     class="ui primary button"/>
