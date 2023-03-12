@@ -19,7 +19,7 @@
     <parent>
         <groupId>org.wso2.identity.apps</groupId>
         <artifactId>identity-apps</artifactId>
-        <version>1.6.191.2-SNAPSHOT</version>
+        <version>1.6.191.2</version>
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
@@ -30,7 +30,7 @@
     <description>WSO2 Identity Server Console App</description>
     <url>http://wso2.org</url>
 
-    <dependencies/>
+    <dependencies />
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -42,7 +42,7 @@
                 <executions>
                     <execution>
                         <id>npm install (initialize)</id>
-                        <phase/>
+                        <phase />
                     </execution>
                 </executions>
             </plugin>
@@ -64,7 +64,7 @@
                         <configuration>
                             <tasks>
                                 <copy todir="${basedir}/src/main/webapp/">
-                                    <fileset dir="${basedir}/build/console/" includes="**/*"/>
+                                    <fileset dir="${basedir}/build/console/" includes="**/*" />
                                 </copy>
                             </tasks>
                         </configuration>
