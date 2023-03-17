@@ -16,9 +16,15 @@
   ~ under the License.
   --%>
 
+<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.AuthContextAPIClient" %>
 <%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.Constants" %>
+<%@ page import="org.wso2.carbon.identity.application.authentication.framework.config.builder.FileBasedConfigurationBuilder" %>
+<%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointUtil" %>
 <%@ page import="org.owasp.encoder.Encode" %>
+<%@ page import="java.util.Map" %>
 <%@ page import="java.io.File" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.google.gson.Gson" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
 
@@ -26,12 +32,42 @@
 <%@ include file="includes/init-url.jsp" %>
 <jsp:directive.include file="includes/layout-resolver.jsp"/>
 
+<%!
+    private static final String SERVER_AUTH_URL = "/api/identity/auth/v1.1/";
+    private static final String EXCLUDE_POLICY = "exclude";
+%>
+
 <%
     String[] missingClaimList = null;
     String appName = null;
     Boolean isFederated = false;
-    if (request.getParameter(Constants.MISSING_CLAIMS) != null) {
-        missingClaimList = request.getParameter(Constants.MISSING_CLAIMS).split(",");
+    List<String> queryParams = FileBasedConfigurationBuilder.getInstance()
+        .getAuthEndpointRedirectParams();
+    String action = FileBasedConfigurationBuilder.getInstance()
+        .getAuthEndpointRedirectParamsAction();
+    boolean missingClaimFilteringEnabled =
+        StringUtils.equals(action, EXCLUDE_POLICY) && queryParams.contains(Constants.MISSING_CLAIMS);
+    if (!missingClaimFilteringEnabled) {
+        if (request.getParameter(Constants.MISSING_CLAIMS) != null) {
+            missingClaimList = request.getParameter(Constants.MISSING_CLAIMS).split(",");
+        }
+    } else {
+        String authAPIURL = application.getInitParameter(Constants.AUTHENTICATION_REST_ENDPOINT_URL);
+        if (StringUtils.isBlank(authAPIURL)) {
+            authAPIURL = IdentityManagementEndpointUtil.getBasePath(tenantDomain, SERVER_AUTH_URL, true);
+        }
+        if (!authAPIURL.endsWith("/")) {
+            authAPIURL += "/";
+        }
+        authAPIURL += "context/" + request.getParameter(Constants.SESSION_DATA_KEY);
+        String contextProperties = AuthContextAPIClient.getContextProperties(authAPIURL);
+        Gson gson = new Gson();
+        Map<String, Object> parameters = gson.fromJson(contextProperties, Map.class);
+        if (parameters != null) {
+            missingClaimList = ((String) parameters.get(Constants.MISSING_CLAIMS)).split(",");
+        } else {
+            request.getRequestDispatcher("error.do").forward(request, response);
+        }
     }
     if (request.getParameter(Constants.REQUEST_PARAM_SP) != null) {
         appName = request.getParameter(Constants.REQUEST_PARAM_SP);
