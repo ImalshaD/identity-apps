@@ -47,7 +47,7 @@
     String confirmationKey = request.getParameter("confirmation");
     String callback = request.getParameter("callback");
 
-    Boolean isValidCallBackURL = false;
+    boolean isValidCallBackURL = false;
     try {
         if (StringUtils.isNotBlank(callback)) {
             PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();
@@ -61,7 +61,6 @@
         request.getRequestDispatcher("error.jsp").forward(request, response);
         return;
     }
-
 
     try {
         if (StringUtils.isNotBlank(callback) && !isValidCallBackURL) {

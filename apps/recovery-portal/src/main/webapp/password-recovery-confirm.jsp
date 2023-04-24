@@ -56,7 +56,7 @@
 
     boolean passwordExpired = Boolean.parseBoolean(request.getParameter("passwordExpired"));
 
-    Boolean isValidCallBackURL = false;
+    boolean isValidCallBackURL = false;
     try {
         if (StringUtils.isNotBlank(callback)) {
             PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();

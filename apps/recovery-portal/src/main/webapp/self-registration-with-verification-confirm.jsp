@@ -65,7 +65,7 @@
         return;
     }
 
-    Boolean isValidCallBackURL = false;
+    boolean isValidCallBackURL = false;
     try {
         if (StringUtils.isNotBlank(callback)) {
             isValidCallBackURL = preferenceRetrievalClient.checkIfSelfRegCallbackURLValid(tenantDomain,callback);

@@ -47,7 +47,7 @@
             tenantDomain = request.getParameter("tenantDomain").trim();
         }
 
-        Boolean isValidCallBackURL = false;
+        boolean isValidCallBackURL = false;
         try {
             if (StringUtils.isNotBlank(callback)) {
                 PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();

@@ -111,7 +111,7 @@
             String policyURL = IdentityManagementServiceUtil.getInstance().getServiceContextURL().replace("/services",
                     "/authenticationendpoint/privacy_policy.do");
 
-            Boolean isValidCallBackURL = false;
+            boolean isValidCallBackURL = false;
             try {
                 if (StringUtils.isNotBlank(callback)) {
                     isValidCallBackURL = preferenceRetrievalClient.checkIfSelfRegCallbackURLValid(tenantDomain,callback);
