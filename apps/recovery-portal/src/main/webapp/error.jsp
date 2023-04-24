@@ -63,7 +63,7 @@
         }
 
         if (StringUtils.isNotBlank(callback) && !isValidCallBackURL) {
-                    isValidCallback = false;
+            isValidCallback = false;
         }
     }
 
