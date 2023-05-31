@@ -1,3 +1,4 @@
+
 <%--
   ~ Copyright (c) 2014, WSO2 LLC. (https://www.wso2.com) All Rights Reserved.
   ~
@@ -128,7 +129,8 @@
         reCaptchaResendEnabled = true;
     }
 
-    if (reCaptchaEnabled || reCaptchaResendEnabled) {
+    boolean genericReCaptchaEnabled = CaptchaUtil.isGenericRecaptchaEnabledAuthenticator("IdentifierExecutor");
+    if (reCaptchaEnabled || reCaptchaResendEnabled || genericReCaptchaEnabled) {
         reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
         reCaptchaAPI = CaptchaUtil.reCaptchaAPIURL();
     }
@@ -206,7 +208,7 @@
     <% } %>
 
     <%
-        if (reCaptchaEnabled || reCaptchaResendEnabled) {
+        if (reCaptchaEnabled || reCaptchaResendEnabled || genericReCaptchaEnabled) {
     %>
     <script src="<%=Encode.forHtmlContent(reCaptchaAPI)%>"></script>
     <%
