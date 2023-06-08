@@ -23,6 +23,7 @@ import { CommonUtils as ReusableCommonUtils, StringUtils } from "@wso2is/core/ut
 import {
     Announcement,
     AppSwitcher,
+    HeaderLinkInterface,
     Logo,
     ProductBrand,
     Header as ReusableHeader,
@@ -43,7 +44,7 @@ import { AppSwitcherIcons } from "../../configs";
 import { AppConstants } from "../../constants";
 import { commonConfig } from "../../extensions";
 import { history, resolveUserstore } from "../../helpers";
-import { AuthStateInterface, ConfigReducerStateInterface } from "../../models";
+import { AuthStateInterface, ConfigReducerStateInterface, FeatureConfigInterface } from "../../models";
 import { AppState } from "../../store";
 import { getProfileInformation, getProfileLinkedAccounts, handleAccountSwitching } from "../../store/actions";
 import { CommonUtils, refreshPage } from "../../utils";
@@ -92,6 +93,7 @@ export const Header: FunctionComponent<HeaderPropsInterface> = (
 
     const [ announcement, setAnnouncement ] = useState<AnnouncementBannerInterface>(undefined);
     const isReadOnlyUser = useSelector((state: AppState) => state.authenticationInformation.profileInfo.isReadOnly);
+    const accessConfig: FeatureConfigInterface = useSelector((state: AppState) => state?.config?.ui?.features);
 
     useEffect(() => {
         if (isEmpty(profileInfo)) {
@@ -222,6 +224,29 @@ export const Header: FunctionComponent<HeaderPropsInterface> = (
     };
 
     /**
+     * Returns general user dropdown links.
+     */
+    const getGeneralUserDropdownLinks = (): HeaderLinkInterface[] => {
+        const dropdownLinks: HeaderLinkInterface[] = [];
+
+        if (accessConfig?.personalInfo?.enabled) {
+            dropdownLinks.push({
+                "data-testid": "app-header-dropdown-link-Personal-Info",
+                name: t("common:personalInfo"),
+                onClick: () => history.push(AppConstants.getPaths().get("PROFILE_INFO"))
+            });
+        }
+
+        dropdownLinks.push({
+            "data-testid": "app-header-dropdown-link-Logout",
+            name: t("common:logout"),
+            onClick: () => history.push(AppConstants.getAppLogoutPath())
+        });
+
+        return dropdownLinks;
+    };
+
+    /**
      * Renders the app switcher dropdown.
      *
      * @return {React.ReactElement}
@@ -349,18 +374,7 @@ export const Header: FunctionComponent<HeaderPropsInterface> = (
                     },
                     {
                         category: "GENERAL",
-                        links: [
-                            {
-                                "data-testid": "app-header-dropdown-link-Personal-Info",
-                                name: t("common:personalInfo"),
-                                onClick: () => history.push(AppConstants.getPaths().get("PROFILE_INFO"))
-                            },
-                            {
-                                "data-testid": "app-header-dropdown-link-Logout",
-                                name: t("common:logout"),
-                                onClick: () => history.push(AppConstants.getAppLogoutPath())
-                            }
-                        ]
+                        links: getGeneralUserDropdownLinks()
                     }
                 ])
             }
