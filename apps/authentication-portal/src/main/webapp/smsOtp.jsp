@@ -18,6 +18,7 @@
 
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointUtil" %>
+<%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.AuthenticationEndpointUtil" %>
 <%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.Constants" %>
 <%@ page import="org.wso2.carbon.identity.authenticator.smsotp.SMSOTPConstants" %>
 <%@ page import="java.io.File" %>
@@ -140,10 +141,10 @@
                                         String reSendCode = request.getParameter("resendCode");
                                         if ("true".equals(reSendCode)) {
                                 %>
-                                    <div 
-                                        id="resendCodeLinkDiv" 
+                                    <div
+                                        id="resendCodeLinkDiv"
                                         class="ui button secondary"
-                                        tabindex="0" 
+                                        tabindex="0"
                                         onclick="resendOtp()"
                                         onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()">
                                         <a id="resend"><%=IdentityManagementEndpointUtil.i18n(resourceBundle, "resend.code")%></a>
@@ -156,6 +157,18 @@
                             <input type='hidden' name='resendCode' id='resendCode' value='false'/>
                         </form>
                     </div>
+                    <div class="ui divider hidden"></div>
+                    <%
+                        String multiOptionURI = request.getParameter("multiOptionURI");
+                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI)) {
+                    %>
+                        <a class="ui primary basic button link-button" id="goBackLink"
+                        href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
+                            <%=AuthenticationEndpointUtil.i18n(resourceBundle, "choose.other.option")%>
+                        </a>
+                    <%
+                        }
+                    %>
                 </div>
             </layout:component>
             <layout:component componentName="ProductFooter" >
