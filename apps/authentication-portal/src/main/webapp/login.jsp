@@ -99,12 +99,12 @@
         }
     }
 
+    boolean isHostedExternally = Boolean.parseBoolean(application.getInitParameter("IsHostedExternally"));
     String multiOptionURIParam = "";
     if (localAuthenticatorNames.size() > 1 || idpAuthenticatorMapping != null && idpAuthenticatorMapping.size() > 1) {
         String baseURL;
         // Check whether authentication endpoint is hosted externally.
-        String isHostedExternally = application.getInitParameter("IsHostedExternally");
-        if (Boolean.parseBoolean(isHostedExternally)) {
+        if (isHostedExternally) {
             String requestURI = request.getRequestURI();
             if (StringUtils.isNotBlank(requestURI)) {
                 requestURI = requestURI.startsWith("/") ? requestURI : "/" + requestURI;
@@ -139,11 +139,15 @@
         reCaptchaResendEnabled = true;
     }
 
-    boolean genericReCaptchaEnabled = CaptchaUtil.isGenericRecaptchaEnabledAuthenticator("IdentifierExecutor");
-    if (reCaptchaEnabled || reCaptchaResendEnabled || genericReCaptchaEnabled) {
-        reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
-        reCaptchaAPI = CaptchaUtil.reCaptchaAPIURL();
+    boolean genericReCaptchaEnabled = false;
+    if (!isHostedExternally) {
+        genericReCaptchaEnabled = CaptchaUtil.isGenericRecaptchaEnabledAuthenticator("IdentifierExecutor");
+        if (reCaptchaEnabled || reCaptchaResendEnabled || genericReCaptchaEnabled) {
+            reCaptchaKey = CaptchaUtil.reCaptchaSiteKey();
+            reCaptchaAPI = CaptchaUtil.reCaptchaAPIURL();
+        }
     }
+    
 %>
 <%
     String inputType = request.getParameter("inputType");
