@@ -7031,6 +7031,26 @@ export const console: ConsoleNS = {
                                         hint: "Lock self registered user account until e-mail verification.",
                                         label: "Lock user account on creation"
                                     },
+                                    selfRegistrationOtpSendOtpInEmail: {
+                                        hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
+                                        label: "Send OTP in e-mail"
+                                    },
+                                    selfRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
+                                        label: "Include uppercase characters in OTP"
+                                    },
+                                    selfRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
+                                        label: "Include lowercase characters in OTP"
+                                    },
+                                    selfRegistrationOtpUseNumbersInOtp: {
+                                        hint: "Enable to include numbers in SMS and e-mail OTPs.",
+                                        label: "Include numbers in OTP"
+                                    },
+                                    selfRegistrationOtpOtpLength: {
+                                        hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
+                                        label: "OTP length"
+                                    },
                                     selfRegistrationSendConfirmationOnCreation: {
                                         hint: "Enable user account confirmation when the user account is not locked on creation",
                                         label: "Enable Account Confirmation On Creation"
@@ -7092,6 +7112,26 @@ export const console: ConsoleNS = {
                                         hint: "Lock self registered user account until e-mail verification.",
                                         label: "Lock user account on creation"
                                     },
+                                    liteRegistrationOtpSendOtpInEmail: {
+                                        hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
+                                        label: "Send OTP in e-mail"
+                                    },
+                                    liteRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
+                                        label: "Include uppercase characters in OTP"
+                                    },
+                                    liteRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
+                                        label: "Include lowercase characters in OTP"
+                                    },
+                                    liteRegistrationOtpUseNumbersInOtp: {
+                                        hint: "Enable to include numbers in SMS and e-mail OTPs.",
+                                        label: "Include numbers in OTP"
+                                    },
+                                    liteRegistrationOtpOtpLength: {
+                                        hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
+                                        label: "OTP length"
+                                    },
                                     liteRegistrationNotificationInternallyManage: {
                                         hint: "Disable if the client application handles notification sending",
                                         label: "Manage notifications sending internally"
@@ -7128,6 +7168,26 @@ export const console: ConsoleNS = {
                                     emailVerificationEnable: {
                                         hint: "A verification notification will be triggered during user creation.",
                                         label: "Enable user email verification"
+                                    },
+                                    emailVerificationOtpSendOtpInEmail: {
+                                        hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
+                                        label: "Send OTP in e-mail"
+                                    },
+                                    emailVerificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
+                                        label: "Include uppercase characters in OTP"
+                                    },
+                                    emailVerificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
+                                        label: "Include lowercase characters in OTP"
+                                    },
+                                    emailVerificationOtpUseNumbersInOtp: {
+                                        hint: "Enable to include numbers in SMS and e-mail OTPs.",
+                                        label: "Include numbers in OTP"
+                                    },
+                                    emailVerificationOtpOtpLength: {
+                                        hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
+                                        label: "OTP length"
                                     },
                                     emailVerificationLockOnCreation: {
                                         hint: "The user account will be locked during user creation.",
@@ -7259,6 +7319,26 @@ export const console: ConsoleNS = {
                                 properties: {
                                     recoveryNotificationPasswordEnable: {
                                         label: "Notification based password recovery"
+                                    },
+                                    recoveryNotificationOtpSendOtpInEmail: {
+                                        hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
+                                        label: "Send OTP in e-mail"
+                                    },
+                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
+                                        label: "Include uppercase characters in OTP"
+                                    },
+                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
+                                        label: "Include lowercase characters in OTP"
+                                    },
+                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                        hint: "Enable to include numbers in SMS and e-mail OTPs.",
+                                        label: "Include numbers in OTP"
+                                    },
+                                    recoveryNotificationOtpOtpLength: {
+                                        hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
+                                        label: "OTP length"
                                     },
                                     recoveryReCaptchaPasswordEnable: {
                                         label: "Enable reCaptcha for password recovery"
@@ -7494,6 +7574,26 @@ export const console: ConsoleNS = {
                                     userClaimUpdateEmailEnableVerification: {
                                         hint: "Trigger a verification notification when user's email address is updated.",
                                         label: "Enable user email verification on update"
+                                    },
+                                    userClaimUpdateOtpSendOtpInEmail: {
+                                        hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
+                                        label: "Send OTP in e-mail"
+                                    },
+                                    userClaimUpdateOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
+                                        label: "Include uppercase characters in OTP"
+                                    },
+                                    userClaimUpdateOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
+                                        label: "Include lowercase characters in OTP"
+                                    },
+                                    userClaimUpdateOtpUseNumbersInOtp: {
+                                        hint: "Enable to include numbers in SMS and e-mail OTPs.",
+                                        label: "Include numbers in OTP"
+                                    },
+                                    userClaimUpdateOtpOtpLength: {
+                                        hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
+                                        label: "OTP length"
                                     },
                                     userClaimUpdateEmailVerificationCodeExpiryTime: {
                                         hint: "Validity time of the email confirmation link in minutes.",

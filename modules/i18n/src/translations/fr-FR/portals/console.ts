@@ -5660,6 +5660,26 @@ export const console: ConsoleNS = {
                                         hint: "Verrouillez le compte d'utilisateur auto-enregistré jusqu'à la vérification par e-mail.",
                                         label: "Verrouiller le compte d'utilisateur sur la création"
                                     },
+                                    selfRegistrationOtpSendOtpInEmail: {
+                                        hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
+                                        label: "Envoyer OTP par e-mail"
+                                    },
+                                    selfRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure les caractères majuscules dans OTP"
+                                    },
+                                    selfRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure des caractères minuscules dans OTP"
+                                    },
+                                    selfRegistrationOtpUseNumbersInOtp: {
+                                        hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
+                                        label: "Inclure des chiffres dans OTP"
+                                    },
+                                    selfRegistrationOtpOtpLength: {
+                                        hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
+                                        label: "Longueur OTP"
+                                    },
                                     selfRegistrationSendConfirmationOnCreation: {
                                         hint: "Activer la confirmation du compte utilisateur lorsque le compte d'utilisateur n'est pas verrouillé sur la création",
                                         label: "Activer la confirmation du compte sur la création"
@@ -5721,6 +5741,26 @@ export const console: ConsoleNS = {
                                         hint: "Verrouillez le compte d'utilisateur auto-enregistré jusqu'à la vérification par e-mail.",
                                         label: "Verrouiller le compte d'utilisateur sur la création"
                                     },
+                                    liteRegistrationOtpSendOtpInEmail: {
+                                        hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
+                                        label: "Envoyer OTP par e-mail"
+                                    },
+                                    liteRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure les caractères majuscules dans OTP"
+                                    },
+                                    liteRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure des caractères minuscules dans OTP"
+                                    },
+                                    liteRegistrationOtpUseNumbersInOtp: {
+                                        hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
+                                        label: "Inclure des chiffres dans OTP"
+                                    },
+                                    liteRegistrationOtpOtpLength: {
+                                        hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
+                                        label: "Longueur OTP"
+                                    },
                                     liteRegistrationNotificationInternallyManage: {
                                         hint: "Désactiver si la demande client gère la notification envoyée",
                                         label: "Gérer les notifications envoyées en interne"
@@ -5757,6 +5797,26 @@ export const console: ConsoleNS = {
                                     emailVerificationEnable: {
                                         hint: "Une notification de vérification sera déclenchée pendant la création d'utilisateurs.",
                                         label: "Activer la vérification de l'e-mail utilisateur"
+                                    },
+                                    emailVerificationOtpSendOtpInEmail: {
+                                        hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
+                                        label: "Envoyer OTP par e-mail"
+                                    },
+                                    emailVerificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure les caractères majuscules dans OTP"
+                                    },
+                                    emailVerificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure des caractères minuscules dans OTP"
+                                    },
+                                    emailVerificationOtpUseNumbersInOtp: {
+                                        hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
+                                        label: "Inclure des chiffres dans OTP"
+                                    },
+                                    emailVerificationOtpOtpLength: {
+                                        hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
+                                        label: "Longueur OTP"
                                     },
                                     emailVerificationLockOnCreation: {
                                         hint: "Le compte d'utilisateur sera verrouillé pendant la création d'utilisateurs.",
@@ -5888,6 +5948,26 @@ export const console: ConsoleNS = {
                                 properties: {
                                     recoveryNotificationPasswordEnable: {
                                         label: "Récupération de mot de passe basée sur la notification"
+                                    },
+                                    recoveryNotificationOtpSendOtpInEmail: {
+                                        hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
+                                        label: "Envoyer OTP par e-mail"
+                                    },
+                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure les caractères majuscules dans OTP"
+                                    },
+                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure des caractères minuscules dans OTP"
+                                    },
+                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                        hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
+                                        label: "Inclure des chiffres dans OTP"
+                                    },
+                                    recoveryNotificationOtpOtpLength: {
+                                        hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
+                                        label: "Longueur OTP"
                                     },
                                     recoveryReCaptchaPasswordEnable: {
                                         label: "Activer RecaptCha pour la récupération de mot de passe"
@@ -6123,6 +6203,26 @@ export const console: ConsoleNS = {
                                     userClaimUpdateEmailEnableVerification: {
                                         hint: "Déclencher une notification de vérification lorsque l'adresse e-mail de l'utilisateur est mise à jour.",
                                         label: "Activer la vérification des e-mails utilisateur lors de la mise à jour"
+                                    },
+                                    userClaimUpdateOtpSendOtpInEmail: {
+                                        hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
+                                        label: "Envoyer OTP par e-mail"
+                                    },
+                                    userClaimUpdateOtpUseUppercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure les caractères majuscules dans OTP"
+                                    },
+                                    userClaimUpdateOtpUseLowercaseCharactersInOtp: {
+                                        hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
+                                        label: "Inclure des caractères minuscules dans OTP"
+                                    },
+                                    userClaimUpdateOtpUseNumbersInOtp: {
+                                        hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
+                                        label: "Inclure des chiffres dans OTP"
+                                    },
+                                    userClaimUpdateOtpOtpLength: {
+                                        hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
+                                        label: "Longueur OTP"
                                     },
                                     userClaimUpdateEmailVerificationCodeExpiryTime: {
                                         hint: "Temps de validité du lien de confirmation par e-mail en quelques minutes.",
