@@ -7325,23 +7325,23 @@ export const console: ConsoleNS = {
                                     recoveryNotificationPasswordEnable: {
                                         label: "Notification based password recovery"
                                     },
-                                    recoveryNotificationOtpSendOtpInEmail: {
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
                                         hint: "Enable to send OTP in verification e-mail instead of confirmation code.",
                                         label: "Send OTP in e-mail"
                                     },
-                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
                                         hint: "Enable to include uppercase characters in SMS and e-mail OTPs.",
                                         label: "Include uppercase characters in OTP"
                                     },
-                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
                                         hint: "Enable to include lowercase characters in SMS and e-mail OTPs.",
                                         label: "Include lowercase characters in OTP"
                                     },
-                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
                                         hint: "Enable to include numbers in SMS and e-mail OTPs.",
                                         label: "Include numbers in OTP"
                                     },
-                                    recoveryNotificationOtpOtpLength: {
+                                    recoveryNotificationPasswordOtpOtpLength: {
                                         hint: "Length of the OTP for SMS and e-mail verifications. OTP length must be 4-10.",
                                         label: "OTP length"
                                     },

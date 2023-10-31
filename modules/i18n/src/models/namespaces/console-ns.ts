@@ -3828,23 +3828,23 @@ export interface ConsoleNS {
                                     recoveryNotificationPasswordEnable: {
                                         label: string;
                                     };
-                                    recoveryNotificationOtpSendOtpInEmail: {
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
                                         hint: string;
                                         label: string;
                                     };
-                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
                                         hint: string;
                                         label: string;
                                     };
-                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
                                         hint: string;
                                         label: string;
                                     };
-                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
                                         hint: string;
                                         label: string;
                                     };
-                                    recoveryNotificationOtpOtpLength: {
+                                    recoveryNotificationPasswordOtpOtpLength: {
                                         hint: string;
                                         label: string;
                                     };

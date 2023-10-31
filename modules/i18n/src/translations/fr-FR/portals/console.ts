@@ -5953,23 +5953,23 @@ export const console: ConsoleNS = {
                                     recoveryNotificationPasswordEnable: {
                                         label: "Récupération de mot de passe basée sur la notification"
                                     },
-                                    recoveryNotificationOtpSendOtpInEmail: {
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
                                         hint: "Activer l'envoi d'OTP dans un e-mail de vérification au lieu d'un code de confirmation.",
                                         label: "Envoyer OTP par e-mail"
                                     },
-                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
                                         hint: "Activer l'inclusion de caractères majuscules dans les OTP des SMS et des e-mails.",
                                         label: "Inclure les caractères majuscules dans OTP"
                                     },
-                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
                                         hint: "Activer l'inclusion de caractères minuscules dans les OTP des SMS et des e-mails.",
                                         label: "Inclure des caractères minuscules dans OTP"
                                     },
-                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
                                         hint: "Activer l'inclusion de numéros dans les OTP par SMS et par e-mail.",
                                         label: "Inclure des chiffres dans OTP"
                                     },
-                                    recoveryNotificationOtpOtpLength: {
+                                    recoveryNotificationPasswordOtpOtpLength: {
                                         hint: "Longueur de l'OTP pour les vérifications par SMS et par e-mail. La longueur de l'OTP doit être comprise entre 4 et 10.",
                                         label: "Longueur OTP"
                                     },

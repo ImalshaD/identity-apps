@@ -5826,23 +5826,23 @@ export const console: ConsoleNS = {
                                     recoveryNotificationPasswordEnable: {
                                         label: "දැනුම්දීම් පදනම් කරගත් මුරපද ප්රතිසාධනය"
                                     },
-                                    recoveryNotificationOtpSendOtpInEmail: {
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
                                         hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
                                         label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
                                     },
-                                    recoveryNotificationOtpUseUppercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
                                         hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
                                         label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
                                     },
-                                    recoveryNotificationOtpUseLowercaseCharactersInOtp: {
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
                                         hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
                                         label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
                                     },
-                                    recoveryNotificationOtpUseNumbersInOtp: {
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
                                         hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
                                         label: "OTP හි අංක ඇතුළත් කරන්න"
                                     },
-                                    recoveryNotificationOtpOtpLength: {
+                                    recoveryNotificationPasswordOtpOtpLength: {
                                         hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
                                         label: "OTP දිග"
                                     },
