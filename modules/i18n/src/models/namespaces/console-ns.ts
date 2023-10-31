@@ -3664,6 +3664,10 @@ export interface ConsoleNS {
                                         hint: string;
                                         label: string;
                                     };
+                                    liteRegistrationResendVerificationOnUserExistence: {
+                                        hint: string;
+                                        label: string;
+                                    };
                                 };
                             };
                             userEmailVerification: {

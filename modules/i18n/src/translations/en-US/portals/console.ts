@@ -7159,7 +7159,12 @@ export const console: ConsoleNS = {
                                     urlListPurposeLiteUserSignUp: {
                                         hint: "Click here to manage Lite-Sign-Up purposes",
                                         label: "Manage Lite-Sign-Up purposes"
-                                    }
+                                    },
+                                    liteRegistrationResendVerificationOnUserExistence: {
+                                        hint: "Resend confirmation email on lite user registration if the lite user already exists.",
+                                        label: "Resend confirmation email if the lite user exists"
+                                    },
+
                                 }
                             },
                             userEmailVerification: {

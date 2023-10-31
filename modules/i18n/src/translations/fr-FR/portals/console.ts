@@ -5788,6 +5788,10 @@ export const console: ConsoleNS = {
                                     urlListPurposeLiteUserSignUp: {
                                         hint: "Cliquez ici pour gérer les objectifs de sign",
                                         label: "Gérer les objectifs lite-sign"
+                                    },
+                                    liteRegistrationResendVerificationOnUserExistence: {
+                                        hint: "Renvoyez l'e-mail de confirmation lors de l'enregistrement de l'utilisateur Lite si l'utilisateur Lite existe déjà.",
+                                        label: "Renvoyer l'e-mail de confirmation si l'utilisateur Lite existe"
                                     }
                                 }
                             },
