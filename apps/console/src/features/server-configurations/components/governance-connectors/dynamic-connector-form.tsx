@@ -24,7 +24,7 @@ import React, { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { Field, reduxForm } from "redux-form";
-import { Divider, Form, Grid } from "semantic-ui-react";
+import { Divider, Form, Grid, Segment } from "semantic-ui-react";
 import { serverConfigurationConfig } from "../../../../extensions";
 import { AppState, FeatureConfigInterface } from "../../../core";
 import { ServerConfigurationsConstants } from "../../constants";
@@ -82,7 +82,22 @@ interface DynamicConnectorFormPropsInterface {
  */
 const DynamicConnectorForm = (props: DynamicConnectorFormPropsInterface) => {
     const { connector, isSubmitting, handleSubmit, [ "data-testid" ]: testId } = props;
-    const properties: ConnectorPropertyInterface[] = props.props.properties;
+    
+    const propertiesFiltered: ConnectorPropertyInterface[] = [];
+    const otpPropertiesFiltered: ConnectorPropertyInterface[] = [];
+    const otpPropertiesFilter = (propertiesOfProps: ConnectorPropertyInterface[]) => {
+        propertiesOfProps.map((property, index) => {
+        if (property.name.includes("UseNumbersInOTP") || property.name.includes("UseLowercaseCharactersInOTP") ||
+               property.name.includes("UseUppercaseCharactersInOTP") || property.name.includes("OTPLength")) {
+               otpPropertiesFiltered.push(property);
+               propertiesFiltered.splice(index, 1);
+           } else if ( !property.name.includes("SMSOTP.Regex") && !property.name.includes("smsOtp.Regex")) {
+               propertiesFiltered.push(property);
+           }
+        })
+    };
+    otpPropertiesFilter(props.props.properties);
+    const properties: ConnectorPropertyInterface[] = propertiesFiltered.concat(otpPropertiesFiltered)
 
     const formValues = useSelector((state: AppState) => state.form[ props.form ].values);
 

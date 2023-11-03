@@ -3535,6 +3535,26 @@ export interface ConsoleNS {
                                         hint: string;
                                         label: string;
                                     };
+                                    selfRegistrationOtpSendOtpInEmail: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    selfRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    selfRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    selfRegistrationOtpUseNumbersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    selfRegistrationOtpOtpLength: {
+                                        hint: string;
+                                        label: string;
+                                    };
                                     selfRegistrationSendConfirmationOnCreation: {
                                         hint: string;
                                         label: string;
@@ -3596,6 +3616,26 @@ export interface ConsoleNS {
                                         hint: string;
                                         label: string;
                                     };
+                                    liteRegistrationOtpSendOtpInEmail: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    liteRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    liteRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    liteRegistrationOtpUseNumbersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    liteRegistrationOtpOtpLength: {
+                                        hint: string;
+                                        label: string;
+                                    };
                                     liteRegistrationNotificationInternallyManage: {
                                         hint: string;
                                         label: string;
@@ -3624,6 +3664,10 @@ export interface ConsoleNS {
                                         hint: string;
                                         label: string;
                                     };
+                                    liteRegistrationResendVerificationOnUserExistence: {
+                                        hint: string;
+                                        label: string;
+                                    };
                                 };
                             };
                             userEmailVerification: {
@@ -3634,6 +3678,26 @@ export interface ConsoleNS {
                                         label: string;
                                     };
                                     emailVerificationLockOnCreation: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    emailVerificationOtpSendOtpInEmail: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    emailVerificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    emailVerificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    emailVerificationOtpUseNumbersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    emailVerificationOtpOtpLength: {
                                         hint: string;
                                         label: string;
                                     };
@@ -3762,6 +3826,26 @@ export interface ConsoleNS {
                                 friendlyName: string;
                                 properties: {
                                     recoveryNotificationPasswordEnable: {
+                                        label: string;
+                                    };
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    recoveryNotificationPasswordOtpOtpLength: {
+                                        hint: string;
                                         label: string;
                                     };
                                     recoveryReCaptchaPasswordEnable: {
@@ -3996,6 +4080,26 @@ export interface ConsoleNS {
                                 friendlyName: string;
                                 properties: {
                                     userClaimUpdateEmailEnableVerification: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    userClaimUpdateOtpSendOtpInEmail: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    userClaimUpdateOtpUseUppercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    userClaimUpdateOtpUseLowercaseCharactersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    userClaimUpdateOtpUseNumbersInOtp: {
+                                        hint: string;
+                                        label: string;
+                                    };
+                                    userClaimUpdateOtpOtpLength: {
                                         hint: string;
                                         label: string;
                                     };

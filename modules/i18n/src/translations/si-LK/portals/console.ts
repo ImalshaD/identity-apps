@@ -5533,6 +5533,26 @@ export const console: ConsoleNS = {
                                         hint: "විද්යුත් තැපැල් සත්යාපනය තෙක් ස්වයං ලියාපදිංචි පරිශීලක ගිණුම අගුළු දමන්න.",
                                         label: "නිර්මාණය පිළිබඳ පරිශීලක ගිණුම අගුළු දමන්න"
                                     },
+                                    selfRegistrationOtpSendOtpInEmail: {
+                                        hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
+                                        label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
+                                    },
+                                    selfRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    selfRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    selfRegistrationOtpUseNumbersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි අංක ඇතුළත් කරන්න"
+                                    },
+                                    selfRegistrationOtpOtpLength: {
+                                        hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
+                                        label: "OTP දිග"
+                                    },
                                     selfRegistrationSendConfirmationOnCreation: {
                                         hint: "පරිශීලක ගිණුම නිර්මාණය කිරීම සඳහා පරිශීලක ගිණුම අගුළු නොයන විට පරිශීලක ගිණුම තහවුරු කිරීම සක්රීය කරන්න",
                                         label: "නිර්මාණය පිළිබඳ ගිණුම් තහවුරු කිරීම සක්රීය කරන්න"
@@ -5594,6 +5614,26 @@ export const console: ConsoleNS = {
                                         hint: "විද්යුත් තැපැල් සත්යාපනය තෙක් ස්වයං ලියාපදිංචි පරිශීලක ගිණුම අගුළු දමන්න.",
                                         label: "නිර්මාණය පිළිබඳ පරිශීලක ගිණුම අගුළු දමන්න"
                                     },
+                                    liteRegistrationOtpSendOtpInEmail: {
+                                        hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
+                                        label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
+                                    },
+                                    liteRegistrationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    liteRegistrationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    liteRegistrationOtpUseNumbersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි අංක ඇතුළත් කරන්න"
+                                    },
+                                    liteRegistrationOtpOtpLength: {
+                                        hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
+                                        label: "OTP දිග"
+                                    },
                                     liteRegistrationNotificationInternallyManage: {
                                         hint: "සේවාදායකයා යෙදුම් යෙදුමේ දැනුම්දීම යැවීම",
                                         label: "දැනුම්දීම් කළමනාකරණය කිරීම අභ්යන්තරව"
@@ -5621,6 +5661,10 @@ export const console: ConsoleNS = {
                                     urlListPurposeLiteUserSignUp: {
                                         hint: "සැහැල්ලු-ලියාපදිංචි වීමේ අරමුණු කළමනාකරණය කිරීම සඳහා මෙහි ක්ලික් කරන්න",
                                         label: "ලයිට් ලියාපදිංචි වීමේ අරමුණු කළමනාකරණය කරන්න"
+                                    },
+                                    liteRegistrationResendVerificationOnUserExistence: {
+                                        hint: "ලයිට් පරිශීලකයා දැනටමත් සිටී නම් ලයිට් පරිශීලක ලියාපදිංචියේදී තහවුරු කිරීමේ විද්‍යුත් තැපෑල නැවත යවන්න.",
+                                        label: "ලයිට් පරිශීලකයා සිටී නම් තහවුරු කිරීමේ විද්‍යුත් තැපෑල නැවත යවන්න"
                                     }
                                 }
                             },
@@ -5630,6 +5674,26 @@ export const console: ConsoleNS = {
                                     emailVerificationEnable: {
                                         hint: "පරිශීලක නිර්මාණය කිරීමේදී සත්යාපන දැනුම්දීමක් අවුලුවනු ඇත.",
                                         label: "පරිශීලක විද්යුත් තැපැල් සත්යාපනය සක්රීය කරන්න"
+                                    },
+                                    emailVerificationOtpSendOtpInEmail: {
+                                        hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
+                                        label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
+                                    },
+                                    emailVerificationOtpUseUppercaseCharactersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    emailVerificationOtpUseLowercaseCharactersInOtp: {
+                                        hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    emailVerificationOtpUseNumbersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි අංක ඇතුළත් කරන්න"
+                                    },
+                                    emailVerificationOtpOtpLength: {
+                                        hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
+                                        label: "OTP දිග"
                                     },
                                     emailVerificationLockOnCreation: {
                                         hint: "පරිශීලක නිර්මාණය අතරතුර පරිශීලක ගිණුම අගුළු දමනු ඇත.",
@@ -5761,6 +5825,26 @@ export const console: ConsoleNS = {
                                 properties: {
                                     recoveryNotificationPasswordEnable: {
                                         label: "දැනුම්දීම් පදනම් කරගත් මුරපද ප්රතිසාධනය"
+                                    },
+                                    recoveryNotificationPasswordOtpSendOtpInEmail: {
+                                        hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
+                                        label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
+                                    },
+                                    recoveryNotificationPasswordOtpUseUppercaseCharactersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    recoveryNotificationPasswordOtpUseLowercaseCharactersInOtp: {
+                                        hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    recoveryNotificationPasswordOtpUseNumbersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි අංක ඇතුළත් කරන්න"
+                                    },
+                                    recoveryNotificationPasswordOtpOtpLength: {
+                                        hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
+                                        label: "OTP දිග"
                                     },
                                     recoveryReCaptchaPasswordEnable: {
                                         label: "මුරපද ප්රතිසාධනය සඳහා Recaptcha සක්රීය කරන්න"
@@ -5996,6 +6080,26 @@ export const console: ConsoleNS = {
                                     userClaimUpdateEmailEnableVerification: {
                                         hint: "පරිශීලකයාගේ විද්යුත් තැපැල් ලිපිනය යාවත්කාලීන වූ විට සත්යාපන දැනුම්දීමක් අවුලුවන්න.",
                                         label: "යාවත්කාලීනයේ පරිශීලක විද්යුත් තැපැල් සත්යාපනය සක්රීය කරන්න"
+                                    },
+                                    userClaimUpdateOtpSendOtpInEmail: {
+                                        hint: "සත්‍යාපන විද්‍යුත් තැපෑලෙහි තහවුරු කිරීමේ කේතය වෙනුවට OTP යැවීමට සබල කරන්න.",
+                                        label: "විද්‍යුත් තැපෑලෙන් OTP යවන්න"
+                                    },
+                                    userClaimUpdateOtpUseUppercaseCharactersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල ලොකු අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි ලොකු අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    userClaimUpdateOtpUseLowercaseCharactersInOtp: {
+                                        hint: "කෙටි අකුරු සහ ඊමේල් OTP වල කුඩා අකුරු ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි කුඩා අකුරු ඇතුළත් කරන්න"
+                                    },
+                                    userClaimUpdateOtpUseNumbersInOtp: {
+                                        hint: "SMS සහ ඊමේල් OTP වල අංක ඇතුළත් කිරීමට සබල කරන්න.",
+                                        label: "OTP හි අංක ඇතුළත් කරන්න"
+                                    },
+                                    userClaimUpdateOtpOtpLength: {
+                                        hint: "SMS සහ ඊමේල් සත්‍යාපනය සඳහා OTP හි දිග. OTP දිග 4-10 විය යුතුය.",
+                                        label: "OTP දිග"
                                     },
                                     userClaimUpdateEmailVerificationCodeExpiryTime: {
                                         hint: "මිනිත්තු කිහිපයකින් විද්යුත් තැපැල් තහවුරු කිරීමේ සබැඳිය වලංගු කාලය.",
