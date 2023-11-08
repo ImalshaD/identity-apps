@@ -147,7 +147,7 @@
             reCaptchaAPI = CaptchaUtil.reCaptchaAPIURL();
         }
     }
-
+    
 %>
 <%
     String inputType = request.getParameter("inputType");
