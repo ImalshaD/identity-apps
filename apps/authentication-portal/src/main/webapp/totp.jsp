@@ -116,6 +116,8 @@
                         } else {
                             // Mark it so that the next submit can be ignored.
                             $form.data('submitted', true);
+                            // trim value before submission
+                            $('#totpInput').val($('#totpInput').val().trim());
                         }
                     });
 
@@ -186,7 +188,7 @@
                             <form action="<%=commonauthURL%>" method="post" id="totpForm" class="ui large form">
                                 <p id="instruction"></p>
                                 <div class="field">
-                                    <input type="text" name="token" class="form-control" autocomplete="off" autofocus
+                                    <input id="totpInput" type="text" name="token" class="form-control" autocomplete="off" autofocus
                                     placeholder="<%=AuthenticationEndpointUtil.i18n(resourceBundle, "verification.code")%>">
                                 </div>
                                 <input id="sessionDataKey" type="hidden" name="sessionDataKey"
