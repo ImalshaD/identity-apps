@@ -213,7 +213,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#authenticate').click(function () {
-                var code = document.getElementById("OTPCode").value;
+                var code = document.getElementById("OTPCode").value.trim();
                 if (code == "") {
                     document.getElementById('alertDiv').innerHTML
                         = '<div id="error-msg" class="ui negative message"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "error.enter.code")%></div>'
@@ -222,6 +222,7 @@
                     if ($('#codeForm').data("submitted") === true) {
                         console.warn("Prevented a possible double submit event");
                     } else {
+                        $('#OTPCode').val(code);
                         $('#codeForm').data("submitted", true);
                         $('#codeForm').submit();
                     }
