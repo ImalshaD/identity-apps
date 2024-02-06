@@ -297,7 +297,6 @@ export class AppConstants {
             .set("OIDC_SCOPES_EDIT", `${ AppConstants.getAdminViewBasePath() }/oidc-scopes/:id`)
             .set("PAGE_NOT_FOUND", `${ AppConstants.getMainViewBasePath() }/404`)
             .set("PRIVACY", `${ AppConstants.getMainViewBasePath() }/privacy`)
-            .set("REMOTE_REPO_CONFIG", `${ AppConstants.getAdminViewBasePath() }/remote-repository-config`)
             .set("ROLES", `${ AppConstants.getAdminViewBasePath() }/roles`)
             .set("ROLE_EDIT", `${ AppConstants.getAdminViewBasePath() }/roles/:id`)
             .set("ROOT", "/")

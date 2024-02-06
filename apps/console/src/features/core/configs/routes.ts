@@ -484,28 +484,12 @@ export const getAdminViewRoutes = (): RouteInterface[] => {
                         showOnSidePanel: true
                     },
                     {
-                        category: "console:manage.features.sidePanel.categories.configurations",
-                        component: lazy(() =>
-                            import("../../remote-repository-configuration/pages/remote-repository-config")
-                        ),
-                        exact: true,
-                        icon: {
-                            icon: getSidePanelIcons().remoteFetch
-                        },
-                        id: "remoteFetchConfig",
-                        name: "console:manage.features.sidePanel.remoteFetchConfig",
-                        order: 10,
-                        path: AppConstants.getPaths().get("REMOTE_REPO_CONFIG"),
-                        protected: true,
-                        showOnSidePanel: true
-                    },
-                    {
                         component: lazy(() => import("../../server-configurations/pages/governance-connectors")),
                         exact: true,
                         icon: null,
                         id: "governanceConnectors",
                         name: "console:manage.features.sidePanel.governanceConnectors",
-                        order: 11,
+                        order: 10,
                         path: AppConstants.getPaths().get("GOVERNANCE_CONNECTORS"),
                         protected: true,
                         showOnSidePanel: false
@@ -533,7 +517,7 @@ export const getAdminViewRoutes = (): RouteInterface[] => {
                         },
                         id: "organizations",
                         name: "console:manage.features.sidePanel.organizations",
-                        order: 12,
+                        order: 11,
                         path: AppConstants.getPaths().get("ORGANIZATIONS"),
                         protected: true,
                         showOnSidePanel: true
@@ -561,7 +545,7 @@ export const getAdminViewRoutes = (): RouteInterface[] => {
                         },
                         id: "organization-roles",
                         name: "Organization Roles",
-                        order: 13,
+                        order: 12,
                         path: AppConstants.getPaths().get("ORGANIZATION_ROLES"),
                         protected: true,
                         showOnSidePanel: true
