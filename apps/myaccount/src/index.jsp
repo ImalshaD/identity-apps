@@ -39,7 +39,7 @@
                 window.location.href = applicationDomain+'/'+"<%= htmlWebpackPlugin.options.basename %>"
             }
         </script>
-        <script src="/<%= htmlWebpackPlugin.options.basename %>/auth-spa-0.3.3.min.js"></script>
+        <script src="/<%= htmlWebpackPlugin.options.basename %>/auth-spa-2.1.1.min.js"></script>
     </head>
     <body>
         <script>
