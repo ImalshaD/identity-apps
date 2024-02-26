@@ -56,6 +56,7 @@ export class AuthenticateUtils {
                 authorizationEndpoint: window["AppUtils"]?.getConfig()?.idpConfigs?.authorizeEndpointURL,
                 checkSessionIframe: window["AppUtils"]?.getConfig()?.idpConfigs?.oidcSessionIFrameEndpointURL,
                 endSessionEndpoint: window["AppUtils"]?.getConfig()?.idpConfigs?.logoutEndpointURL,
+                issuer: window["AppUtils"]?.getConfig()?.idpConfigs?.issuer,
                 jwksUri: window["AppUtils"]?.getConfig()?.idpConfigs?.jwksEndpointURL,
                 revocationEndpoint: window["AppUtils"]?.getConfig()?.idpConfigs?.tokenRevocationEndpointURL,
                 tokenEndpoint: window["AppUtils"]?.getConfig()?.idpConfigs?.tokenEndpointURL
@@ -64,10 +65,12 @@ export class AuthenticateUtils {
             responseMode: window["AppUtils"]?.getConfig()?.idpConfigs?.responseMode ?? responseModeFallback,
             scope: window["AppUtils"]?.getConfig()?.idpConfigs?.scope ?? [ TokenConstants.SYSTEM_SCOPE ],
             sendCookiesInRequests: true,
+            sendIdTokenInLogoutRequest: true,
             sessionRefreshInterval: window[ "AppUtils" ]?.getConfig()?.session?.sessionRefreshTimeOut,
             signInRedirectURL: window["AppUtils"]?.getConfig()?.loginCallbackURL,
             signOutRedirectURL: window["AppUtils"]?.getConfig()?.loginCallbackURL,
-            storage: AuthenticateUtils.resolveStorage() as Storage.WebWorker
+            storage: AuthenticateUtils.resolveStorage() as Storage.WebWorker,
+            validateIDTokenIssuer: window["AppUtils"]?.getConfig()?.idpConfigs?.validateIDTokenIssuer
         };
     };
 
