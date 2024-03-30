@@ -22,12 +22,41 @@
 <%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.Constants" %>
 <%@ page import="org.wso2.carbon.identity.authenticator.smsotp.SMSOTPConstants" %>
 <%@ page import="java.io.File" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ include file="includes/localize.jsp" %>
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
 
 <jsp:directive.include file="includes/layout-resolver.jsp"/>
+
+<%!
+    private boolean isMultiAuthAvailable(String multiOptionURI) {
+        boolean isMultiAuthAvailable = true;
+        if (multiOptionURI == null || multiOptionURI.equals("null")) {
+            isMultiAuthAvailable = false;
+        } else {
+            int authenticatorIndex = multiOptionURI.indexOf("authenticators=");
+            if (authenticatorIndex == -1) {
+                isMultiAuthAvailable = false;
+            } else {
+                String authenticators = multiOptionURI.substring(authenticatorIndex + 15);
+                int authLastIndex = authenticators.indexOf("&") != -1 ? authenticators.indexOf("&") : authenticators.length();
+                authenticators = authenticators.substring(0, authLastIndex);
+                List<String> authList = new ArrayList<>(Arrays.asList(authenticators.split("%3B")));
+                if (authList.size() < 2) {
+                    isMultiAuthAvailable = false;
+                }
+                else if (authList.size() == 2 && authList.contains("backup-code-authenticator%3ALOCAL")) {
+                    isMultiAuthAvailable = false;
+                }
+            }
+        }
+        return isMultiAuthAvailable;
+    }
+%>
 
 <%
     request.getSession().invalidate();
@@ -155,12 +184,15 @@
                                     value="<%=IdentityManagementEndpointUtil.i18n(resourceBundle, "authenticate.button")%>" class="ui primary button"/>
                             </div>
                             <input type='hidden' name='resendCode' id='resendCode' value='false'/>
+                            <input id="multiOptionURI" type="hidden" name="multiOptionURI"
+                                   value='<%=Encode.forHtmlAttribute(request.getParameter("multiOptionURI"))%>' />
                         </form>
                     </div>
                     <div class="ui divider hidden"></div>
                     <%
                         String multiOptionURI = request.getParameter("multiOptionURI");
-                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI)) {
+                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                isMultiAuthAvailable(multiOptionURI)) {
                     %>
                         <a class="ui primary basic button link-button" id="goBackLink"
                         href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>

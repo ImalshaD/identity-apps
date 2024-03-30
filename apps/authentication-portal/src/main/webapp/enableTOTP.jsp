@@ -54,6 +54,32 @@
     }
 %>
 
+<%!
+    private boolean isMultiAuthAvailable(String multiOptionURI) {
+        boolean isMultiAuthAvailable = true;
+        if (multiOptionURI == null || multiOptionURI.equals("null")) {
+            isMultiAuthAvailable = false;
+        } else {
+            int authenticatorIndex = multiOptionURI.indexOf("authenticators=");
+            if (authenticatorIndex == -1) {
+                isMultiAuthAvailable = false;
+            } else {
+                String authenticators = multiOptionURI.substring(authenticatorIndex + 15);
+                int authLastIndex = authenticators.indexOf("&") != -1 ? authenticators.indexOf("&") : authenticators.length();
+                authenticators = authenticators.substring(0, authLastIndex);
+                List<String> authList = new ArrayList<>(Arrays.asList(authenticators.split("%3B")));
+                if (authList.size() < 2) {
+                    isMultiAuthAvailable = false;
+                }
+                else if (authList.size() == 2 && authList.contains("backup-code-authenticator%3ALOCAL")) {
+                    isMultiAuthAvailable = false;
+                }
+            }
+        }
+        return isMultiAuthAvailable;
+    }
+%>
+
 <%-- Data for the layout from the page --%>
 <%
     layoutData.put("containerSize", "medium");
@@ -137,7 +163,8 @@
                     <div class="ui divider hidden"></div>
                     <%
                         String multiOptionURI = request.getParameter("multiOptionURI");
-                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI)) {
+                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                isMultiAuthAvailable(multiOptionURI)) {
                     %>
                         <a class="ui primary basic button link-button" id="goBackLink"
                         href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>

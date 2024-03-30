@@ -135,6 +135,8 @@
                             </div>
                             <input type="hidden" name="sessionDataKey"
                                     value='<%=Encode.forHtmlAttribute(request.getParameter("sessionDataKey"))%>'/>
+                            <input id="multiOptionURI" type="hidden" name="multiOptionURI"
+                                   value='<%=Encode.forHtmlAttribute(request.getParameter("multiOptionURI"))%>' />
 
                             <div class="align-right buttons">
                                 <input type="button" name="update" id="update" value="<%=IdentityManagementEndpointUtil.i18n(resourceBundle, "update")%>"
