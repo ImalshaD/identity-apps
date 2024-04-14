@@ -19,6 +19,9 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="java.io.File" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.List" %>
 <%@ page import="org.apache.commons.text.StringEscapeUtils" %>
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
 
@@ -26,6 +29,32 @@
 <%@include file="includes/init-url.jsp" %>
 <jsp:directive.include file="extensions/branding-preferences.jsp"/>
 <jsp:directive.include file="includes/layout-resolver.jsp"/>
+
+<%!
+    private boolean isMultiAuthAvailable(String multiOptionURI) {
+        boolean isMultiAuthAvailable = true;
+        if (multiOptionURI == null || multiOptionURI.equals("null")) {
+            isMultiAuthAvailable = false;
+        } else {
+            int authenticatorIndex = multiOptionURI.indexOf("authenticators=");
+            if (authenticatorIndex == -1) {
+                isMultiAuthAvailable = false;
+            } else {
+                String authenticators = multiOptionURI.substring(authenticatorIndex + 15);
+                int authLastIndex = authenticators.indexOf("&") != -1 ? authenticators.indexOf("&") : authenticators.length();
+                authenticators = authenticators.substring(0, authLastIndex);
+                List<String> authList = new ArrayList<>(Arrays.asList(authenticators.split("%3B")));
+                if (authList.size() < 2) {
+                    isMultiAuthAvailable = false;
+                }
+                else if (authList.size() == 2 && authList.contains("backup-code-authenticator%3ALOCAL")) {
+                    isMultiAuthAvailable = false;
+                }
+            }
+        }
+        return isMultiAuthAvailable;
+    }
+%>
 
 <%
     String authRequest = request.getParameter("data");
@@ -126,6 +155,18 @@
                                     <%=AuthenticationEndpointUtil.i18n(resourceBundle, "fido.retry" )%>
                                 </button>
                             </div>
+                            <%
+                                String multiOptionURI = request.getParameter("multiOptionURI");
+                                if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                        isMultiAuthAvailable(multiOptionURI)) {
+                            %>
+                            <a class="ui button link-button" id="goBackLink"
+                               href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
+                                Choose a different authentication option
+                            </a>
+                            <%
+                                }
+                            %>
                         </div>
                     </div>
                     <div>

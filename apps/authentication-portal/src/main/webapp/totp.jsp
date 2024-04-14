@@ -36,6 +36,32 @@
 <%-- Branding Preferences --%>
 <jsp:directive.include file="extensions/branding-preferences.jsp" />
 
+<%!
+    private boolean isMultiAuthAvailable(String multiOptionURI) {
+        boolean isMultiAuthAvailable = true;
+        if (multiOptionURI == null || multiOptionURI.equals("null")) {
+            isMultiAuthAvailable = false;
+        } else {
+            int authenticatorIndex = multiOptionURI.indexOf("authenticators=");
+            if (authenticatorIndex == -1) {
+                isMultiAuthAvailable = false;
+            } else {
+                String authenticators = multiOptionURI.substring(authenticatorIndex + 15);
+                int authLastIndex = authenticators.indexOf("&") != -1 ? authenticators.indexOf("&") : authenticators.length();
+                authenticators = authenticators.substring(0, authLastIndex);
+                List<String> authList = new ArrayList<>(Arrays.asList(authenticators.split("%3B")));
+                if (authList.size() < 2) {
+                    isMultiAuthAvailable = false;
+                }
+                else if (authList.size() == 2 && authList.contains("backup-code-authenticator%3ALOCAL")) {
+                    isMultiAuthAvailable = false;
+                }
+            }
+        }
+        return isMultiAuthAvailable;
+    }
+%>
+
 <%
     request.getSession().invalidate();
     String queryString = request.getQueryString();
@@ -193,6 +219,8 @@
                                 </div>
                                 <input id="sessionDataKey" type="hidden" name="sessionDataKey"
                                        value='<%=Encode.forHtmlAttribute(request.getParameter("sessionDataKey"))%>' />
+                                <input id="multiOptionURI" type="hidden" name="multiOptionURI"
+                                       value='<%=Encode.forHtmlAttribute(request.getParameter("multiOptionURI"))%>' />
                                 <div class="ui divider hidden"></div>
                                 <div class="ui two column stackable grid">
 
@@ -213,7 +241,8 @@
                         <div class="ui divider hidden"></div>
                         <%
                             String multiOptionURI = request.getParameter("multiOptionURI");
-                            if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI)) {
+                            if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                    isMultiAuthAvailable(multiOptionURI)) {
                         %>
                             <a class="ui primary basic button link-button" id="goBackLink"
                             href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
