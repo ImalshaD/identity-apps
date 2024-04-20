@@ -155,18 +155,21 @@
                                     <%=AuthenticationEndpointUtil.i18n(resourceBundle, "fido.retry" )%>
                                 </button>
                             </div>
-                            <%
-                                String multiOptionURI = request.getParameter("multiOptionURI");
-                                if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
-                                        isMultiAuthAvailable(multiOptionURI)) {
-                            %>
-                            <a class="ui button link-button" id="goBackLink"
-                               href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
-                                Choose a different authentication option
-                            </a>
-                            <%
-                                }
-                            %>
+                            <div class="ui divider hidden"></div>
+                            <div class="ui container medium center aligned middle aligned">
+                                <%
+                                    String multiOptionURI = request.getParameter("multiOptionURI");
+                                    if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                            isMultiAuthAvailable(multiOptionURI)) {
+                                %>
+                                    <a class="ui primary basic button link-button" id="goBackLink"
+                                    href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
+                                        <%=AuthenticationEndpointUtil.i18n(resourceBundle, "choose.other.option")%>
+                                    </a>
+                                <%
+                                    }
+                                %>
+                            </div>
                         </div>
                     </div>
                     <div>
