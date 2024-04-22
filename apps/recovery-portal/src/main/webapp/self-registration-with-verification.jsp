@@ -64,6 +64,7 @@
     String username = request.getParameter("username");
     String consentPurposeGroupName = "SELF-SIGNUP";
     String consentPurposeGroupType = "SYSTEM";
+    String JIT = "JIT";
     String[] missingClaimList = new String[0];
     String[] missingClaimDisplayName = new String[0];
     Map<String, Claim> uniquePIIs = null;
@@ -87,12 +88,12 @@
     }
 
     if (skipSignUpEnableCheck) {
-        consentPurposeGroupName = "JIT";
+        consentPurposeGroupName = JIT;
     }
 
     String tenantQualifiedUsername = username;
     if (!MultitenantUtils.isEmailUserName() && FrameworkUtils.isEmailUsernameAllowedWhenEmailAsUsernameIsNotEnabled() &&
-        consentPurposeGroupName == "JIT" && username.contains(IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR) && tenantDomain != null) {
+        consentPurposeGroupName == JIT && username.contains(IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR) && tenantDomain != null) {
         if (username.split(IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR).length == 2) {
             tenantQualifiedUsername = username + IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR + tenantDomain;
         }
