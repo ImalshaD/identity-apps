@@ -159,7 +159,7 @@
                             <div class="ui container medium center aligned middle aligned">
                                 <%
                                     String multiOptionURI = request.getParameter("multiOptionURI");
-                                    if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI) &&
+                                    if (multiOptionURI != null && AuthenticationEndpointUtil.isValidMultiOptionURI(multiOptionURI) &&
                                             isMultiAuthAvailable(multiOptionURI)) {
                                 %>
                                     <a class="ui primary basic button link-button" id="goBackLink"

@@ -161,7 +161,7 @@
                     <div class="ui divider hidden"></div>
                     <%
                         String multiOptionURI=request.getParameter("multiOptionURI");
-                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidURL(multiOptionURI)) { %>
+                        if (multiOptionURI != null && AuthenticationEndpointUtil.isValidMultiOptionURI(multiOptionURI)) { %>
                             <a class="ui primary basic button link-button" id="goBackLink" href='<%=Encode.forHtmlAttribute(multiOptionURI)%>'>
                                 <%=AuthenticationEndpointUtil.i18n(resourceBundle, "choose.other.option")%>
                             </a>
