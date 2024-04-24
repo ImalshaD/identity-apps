@@ -92,7 +92,7 @@
     }
 
     String tenantQualifiedUsername = username;
-    if (!MultitenantUtils.isEmailUserName() && FrameworkUtils.isEmailUsernameAllowedWhenEmailAsUsernameIsNotEnabled() &&
+    if (!MultitenantUtils.isEmailUserName() && FrameworkUtils.retainEmailDomainOnProvisioning() &&
         consentPurposeGroupName == JIT && username.contains(IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR) && tenantDomain != null) {
         if (username.split(IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR).length == 2) {
             tenantQualifiedUsername = username + IdentityManagementEndpointConstants.TENANT_DOMAIN_SEPARATOR + tenantDomain;
