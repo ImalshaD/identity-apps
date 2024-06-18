@@ -85,7 +85,7 @@
             // Remove oidc scopes from the scope list to display.
             Set<String> requestedOIDCScopes = Set.of(requestedOIDCScopeString.split(" "));
             openIdScopes = Arrays.stream(scopeString.split(" "))
-                .filter(scope -> !requestedOIDCScopes.contains(x.toLowerCase()))
+                .filter(scope -> !requestedOIDCScopes.contains(scope.toLowerCase()))
                 .collect(Collectors.toList());
         } else {
             openIdScopes = Arrays.stream(scopeString.split(" ")).collect(Collectors.toList());
