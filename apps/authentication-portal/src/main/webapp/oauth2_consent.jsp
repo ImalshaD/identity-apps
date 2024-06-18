@@ -30,6 +30,7 @@
 <%@ page import="org.wso2.carbon.identity.oauth.OAuthAdminServiceImpl" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.net.URLDecoder" %>
+<%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
@@ -83,11 +84,11 @@
         if (StringUtils.isNotBlank(requestedOIDCScopeString)) {
             // Remove oidc scopes from the scope list to display.
             Set<String> requestedOIDCScopes = Set.of(requestedOIDCScopeString.split(" "));
-            openIdScopes = Stream.of(scopeString.split(" "))
-                .filter(x -> !requestedOIDCScopes.contains(x.toLowerCase()))
+            openIdScopes = Arrays.stream(scopeString.split(" "))
+                .filter(scope -> !requestedOIDCScopes.contains(x.toLowerCase()))
                 .collect(Collectors.toList());
         } else {
-            openIdScopes = Stream.of(scopeString.split(" ")).collect(Collectors.toList());
+            openIdScopes = Arrays.stream(scopeString.split(" ")).collect(Collectors.toList());
         }
     }
 %>
