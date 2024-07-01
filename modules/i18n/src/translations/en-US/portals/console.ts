@@ -2168,6 +2168,15 @@ export const console: ConsoleNS = {
                                     empty: "This is a required field.",
                                     invalid: "Enter a valid URL"
                                 }
+                            },
+                            replyToLogout: {
+                                hint: "Enter RP endpoint URL that handles the response at logout.",
+                                label: "Reply Logout URL",
+                                placeholder: "Enter Reply Logout URL",
+                                validations: {
+                                    empty: "This is a required field.",
+                                    invalid: "Enter a valid URL"
+                                }
                             }
                         }
                     },

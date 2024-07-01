@@ -1000,6 +1000,7 @@ export interface ConsoleNS {
                         fields: {
                             realm: FormAttributes;
                             replyTo: FormAttributes;
+                            replyToLogout: FormAttributes;
                         };
                     };
                     inboundWSTrust: {

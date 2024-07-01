@@ -16,12 +16,12 @@
  * under the License.
  */
 
+import { ApplicationManagementConstants } from "../../constants";
 import {
     ApplicationTemplateInterface,
     ApplicationTemplateListItemInterface,
     DefaultProtocolTemplate
 } from "../../models";
-import {ApplicationManagementConstants} from "../../constants";
 
 export const PassiveStsProtocolTemplateItem: ApplicationTemplateListItemInterface = {
     authenticationProtocol: "passive-sts",
@@ -37,7 +37,8 @@ export const PassiveStsProtocolTemplate: ApplicationTemplateInterface = {
         inboundProtocolConfiguration: {
             passiveSts: {
                 realm: "",
-                replyTo: ""
+                replyTo: "",
+                replyToLogout: ""
             }
         },
         name: ""
