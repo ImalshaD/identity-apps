@@ -759,6 +759,7 @@
         }
 
         private boolean isLoginHintAvailable(String inputType) {
+
             return "login_hint".equalsIgnoreCase(inputType);
         }
     %>
