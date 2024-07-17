@@ -236,10 +236,11 @@
                         console.warn("Prevented a possible double submit event");
                     } else {
                         var OTPcode = document.getElementById("OTPcode").value.trim();
-                        if (OTPcode == "") {
+                        var resendCode = document.getElementById("resendCode").value
+                        if (OTPcode == "" && resendCode == "false") {
                             e.preventDefault();
-                            document.getElementById('alertDiv').innerHTML
-                                = '<div id="error-msg" class="ui negative message"><%=IdentityManagementEndpointUtil.i18n(resourceBundle, "please.enter.code")%></div><div class="ui divider hidden"></div>';
+                            document.getElementById('failed-msg').innerHTML
+                                = '<%=IdentityManagementEndpointUtil.i18n(resourceBundle, "please.enter.code")%>';
                         } else {
                             $('#pin_form').data("submitted", true);
                             $('#OTPcode').val(OTPcode);
