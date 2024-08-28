@@ -45,8 +45,11 @@ export const updatePassword = (currentPassword: string, newPassword: string): Pr
     // See https://github.com/asgardio/asgardio-js-oidc-sdk/issues/45 for progress.
     // httpRequest.disableHandler();
 
-    const username: string = [ store.getState().authenticationInformation?.profileInfo.userName, "@",
-        store.getState().authenticationInformation.tenantDomain ].join("");
+    const username: string = [
+        store.getState().authenticationInformation?.profileInfo.userName,
+        "@",
+        store.getState().authenticationInformation.tenantDomain
+    ].join("");
     // In case the password contains non-ascii characters, converting to valid ascii format.
     const encoder: TextEncoder = new TextEncoder();
     const encodedPassword: string = String.fromCharCode(...encoder.encode(currentPassword));
