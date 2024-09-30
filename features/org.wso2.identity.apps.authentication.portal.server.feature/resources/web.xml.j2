@@ -161,6 +161,15 @@
     {% endif %}
     <!-- *************** End of Layout Store URL Configuration ********************** -->
 
+    <!-- *************** Allow Resend OTP Without Failure Configuration ********************** -->
+    {% if authenticationendpoint.allow_resend_otp_without_failure is defined %}
+    <context-param>
+        <param-name>AllowResendOtpWithoutFailure</param-name>
+        <param-value>{{ authenticationendpoint.allow_resend_otp_without_failure }}</param-value>
+    </context-param>
+    {% endif %}
+    <!-- *************** End of Show Resend OTP Without Failure Configuration ********************** -->
+
     <filter>
         <filter-name>HttpHeaderSecurityFilter</filter-name>
         <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>

@@ -31,6 +31,7 @@
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
 
 <jsp:directive.include file="includes/layout-resolver.jsp"/>
+<jsp:include page="util/countdown.jsp"/>
 
 <%!
     private boolean isMultiAuthAvailable(String multiOptionURI) {
@@ -59,6 +60,7 @@
 %>
 
 <%
+    boolean allowResendOtpWithoutFailure = Boolean.parseBoolean(application.getInitParameter("AllowResendOtpWithoutFailure"));
     request.getSession().invalidate();
     String queryString = request.getQueryString();
     Map<String, String> idpAuthenticatorMapping = null;
@@ -166,19 +168,20 @@
                             value='<%=Encode.forHtmlAttribute(request.getParameter("sessionDataKey"))%>'/><br/>
                             <div class="align-right buttons">
                                 <%
-                                    if ("true".equals(authenticationFailed)) {
-                                        String reSendCode = request.getParameter("resendCode");
-                                        if ("true".equals(reSendCode)) {
+                                	String resendCode = request.getParameter("resendCode");
+                                	boolean shouldShowResendOtp = allowResendOtpWithoutFailure || ("true".equals(authenticationFailed) && "true".equals(resendCode));
+                                    if (shouldShowResendOtp) {
+                                	    boolean isButtonDisabled = allowResendOtpWithoutFailure && !"true".equals(resendCode);
                                 %>
-                                    <div
-                                        id="resendCodeLinkDiv"
-                                        class="ui button secondary"
-                                        tabindex="0"
-                                        onclick="resendOtp()"
-                                        onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()">
-                                        <a id="resend"><%=IdentityManagementEndpointUtil.i18n(resourceBundle, "resend.code")%></a>
-                                    </div>
-                                <% } } %>
+                                <div
+                                    id="resendCodeLinkDiv"
+                                	class="ui button secondary <%= isButtonDisabled ? "disabled" : "" %>"
+                                	tabindex="0"
+                                	onclick="resendOtp()"
+                                	onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()">
+                                	<a id="resend"><%= IdentityManagementEndpointUtil.i18n(resourceBundle, "resend.code") %></a>
+                                	</div>
+                                <% } %>
                                 <input
                                     type="submit" name="authenticate" id="authenticate"
                                     value="<%=IdentityManagementEndpointUtil.i18n(resourceBundle, "authenticate.button")%>" class="ui primary button"/>
@@ -227,6 +230,7 @@
         <% } %>
 
         <script type="text/javascript">
+        var allowResendOtpWithoutFailure = <%= allowResendOtpWithoutFailure %>;
         $(document).ready(function() {
             $.fn.preventDoubleSubmission = function() {
                 $('#pin_form').on('submit', function(e) {
@@ -249,6 +253,28 @@
                 });
             };
             $('#pin_form').preventDoubleSubmission();
+            if (allowResendOtpWithoutFailure) {
+                const WAIT_TIME_SECONDS = 60;
+                const resendCodeLinkDiv = $('#resendCodeLinkDiv');
+                const resendCode = $('#resend');
+                const resendButtonText = resendCode.text();
+
+                // Update the button text initially to avoid waiting until the first tick to update.
+                resendCode.html(Math.floor(WAIT_TIME_SECONDS / 60).toString().padStart(2, '0') + " : " + (WAIT_TIME_SECONDS % 60).toString().padStart(2, '0'));
+                resendCodeLinkDiv.addClass('disabled');
+
+                const countdown = new Countdown(
+                    Countdown.seconds(WAIT_TIME_SECONDS),
+                    () => {
+                        resendCode.html(resendButtonText);
+                        resendCodeLinkDiv.removeClass('disabled');
+                    },
+                    (time) => {
+                        resendCode.html(time.minutes.toString().padStart(2, '0') + " : " + time.seconds.toString().padStart(2, '0'));
+                    },
+                    "SMS_OTP_TIMER"
+                ).start();
+            }
         });
         function resendOtp() {
             document.getElementById("resendCode").value = "true";
