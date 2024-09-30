@@ -180,7 +180,7 @@
                                 	onclick="resendOtp()"
                                 	onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()">
                                 	<a id="resend"><%= IdentityManagementEndpointUtil.i18n(resourceBundle, "resend.code") %></a>
-                                	</div>
+                                </div>
                                 <% } %>
                                 <input
                                     type="submit" name="authenticate" id="authenticate"
