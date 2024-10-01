@@ -161,6 +161,15 @@
     {% endif %}
     <!-- *************** End of Layout Store URL Configuration ********************** -->
 
+    <!-- *************** Always Display Resend OTP Option Configuration ********************** -->
+    {% if authenticationendpoint.always_display_resend_otp_option is defined %}
+    <context-param>
+        <param-name>AlwaysDisplayResendOtpOption</param-name>
+        <param-value>{{ authenticationendpoint.always_display_resend_otp_option }}</param-value>
+    </context-param>
+    {% endif %}
+    <!-- *************** End of Always Display Resend OTP Option Configuration ********************** -->
+
     <filter>
         <filter-name>HttpHeaderSecurityFilter</filter-name>
         <filter-class>org.apache.catalina.filters.HttpHeaderSecurityFilter</filter-class>
