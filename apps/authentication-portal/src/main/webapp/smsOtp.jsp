@@ -60,7 +60,7 @@
 %>
 
 <%
-    boolean allowResendOtpWithoutFailure = Boolean.parseBoolean(application.getInitParameter("AllowResendOtpWithoutFailure"));
+    boolean alwaysDisplayResendOtpOption = Boolean.parseBoolean(application.getInitParameter("AlwaysDisplayResendOtpOption"));
     request.getSession().invalidate();
     String queryString = request.getQueryString();
     Map<String, String> idpAuthenticatorMapping = null;
@@ -169,13 +169,13 @@
                             <div class="align-right buttons">
                                 <%
                                 	String resendCode = request.getParameter("resendCode");
-                                	boolean shouldShowResendOtp = allowResendOtpWithoutFailure || ("true".equals(authenticationFailed) && "true".equals(resendCode));
+                                	boolean shouldShowResendOtp = alwaysDisplayResendOtpOption || ("true".equals(authenticationFailed) && "true".equals(resendCode));
                                     if (shouldShowResendOtp) {
-                                	    boolean isButtonDisabled = allowResendOtpWithoutFailure && !"true".equals(resendCode);
+                                	    boolean isResendOtpOptionDisabled = alwaysDisplayResendOtpOption && !"true".equals(resendCode);
                                 %>
                                 <div
                                     id="resendCodeLinkDiv"
-                                	class="ui button secondary <%= isButtonDisabled ? "disabled" : "" %>"
+                                	class="ui button secondary <%= isResendOtpOptionDisabled ? "disabled" : "" %>"
                                 	tabindex="0"
                                 	onclick="resendOtp()"
                                 	onkeypress="javascript: if (window.event.keyCode === 13) resendOtp()">
@@ -230,7 +230,7 @@
         <% } %>
 
         <script type="text/javascript">
-        var allowResendOtpWithoutFailure = <%= allowResendOtpWithoutFailure %>;
+        var alwaysDisplayResendOtpOption = <%= alwaysDisplayResendOtpOption %>;
         $(document).ready(function() {
             $.fn.preventDoubleSubmission = function() {
                 $('#pin_form').on('submit', function(e) {
@@ -253,7 +253,7 @@
                 });
             };
             $('#pin_form').preventDoubleSubmission();
-            if (allowResendOtpWithoutFailure) {
+            if (alwaysDisplayResendOtpOption) {
                 const WAIT_TIME_SECONDS = 60;
                 const resendCodeLinkDiv = $('#resendCodeLinkDiv');
                 const resendCode = $('#resend');

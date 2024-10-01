@@ -161,14 +161,14 @@
     {% endif %}
     <!-- *************** End of Layout Store URL Configuration ********************** -->
 
-    <!-- *************** Allow Resend OTP Without Failure Configuration ********************** -->
-    {% if authenticationendpoint.allow_resend_otp_without_failure is defined %}
+    <!-- *************** Always Display Resend OTP Option Configuration ********************** -->
+    {% if authenticationendpoint.always_display_resend_otp_option is defined %}
     <context-param>
-        <param-name>AllowResendOtpWithoutFailure</param-name>
-        <param-value>{{ authenticationendpoint.allow_resend_otp_without_failure }}</param-value>
+        <param-name>AlwaysDisplayResendOtpOption</param-name>
+        <param-value>{{ authenticationendpoint.always_display_resend_otp_option }}</param-value>
     </context-param>
     {% endif %}
-    <!-- *************** End of Show Resend OTP Without Failure Configuration ********************** -->
+    <!-- *************** End of Always Display Resend OTP Option Configuration ********************** -->
 
     <filter>
         <filter-name>HttpHeaderSecurityFilter</filter-name>
