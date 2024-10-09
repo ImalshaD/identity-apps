@@ -589,7 +589,7 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
         }
 
         if (activeForm === CommonConstants.PERSONAL_INFO+schema.name) {
-            const fieldName = t("myAccount:components.profile.fields." + schema.name.replace(".", "_"),
+            const fieldName = t("myAccount:components.profile.fields." + schema.displayName,
                 { defaultValue: schema.displayName }
             );
 
@@ -849,7 +849,7 @@ export const Profile: FunctionComponent<ProfileProps> = (props: ProfileProps): R
                     )
             );
         } else {
-            const fieldName = t("myAccount:components.profile.fields." + schema.name.replace(".", "_"),
+            const fieldName = t("myAccount:components.profile.fields." + schema.displayName,
                 { defaultValue: schema.displayName }
             );
 
