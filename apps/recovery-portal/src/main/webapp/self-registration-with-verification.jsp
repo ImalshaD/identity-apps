@@ -646,7 +646,7 @@
                                 </div>
                                 <div class="ui divider hidden"></div>
                                 <div class="align-right buttons">
-                                    <a href="javascript:goBack()" class="ui button secondary">
+                                    <a href="#" onclick="goBack(event)" class="ui button secondary">
                                         <%=IdentityManagementEndpointUtil.i18n(recoveryResourceBundle, "Cancel")%>
                                     </a>
                                     <button id="registrationSubmit"
@@ -764,7 +764,8 @@
             }
         });
 
-        function goBack() {
+        function goBack(event) {
+            event.preventDefault();
             window.history.back();
         }
 
