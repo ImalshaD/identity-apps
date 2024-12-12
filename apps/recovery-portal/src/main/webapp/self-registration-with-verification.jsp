@@ -69,6 +69,11 @@
     String[] missingClaimDisplayName = new String[0];
     Map<String, Claim> uniquePIIs = null;
     boolean piisConfigured = false;
+
+    String numOfSubmission = null;
+    if (((String) request.getAttribute("numOfSubmission")) != null) {
+        numOfSubmission = (String) request.getAttribute("numOfSubmission");
+    }
     if (request.getParameter(Constants.MISSING_CLAIMS) != null) {
         missingClaimList = request.getParameter(Constants.MISSING_CLAIMS).split(",");
     }
@@ -370,6 +375,11 @@
                                            value="<%=Encode.forHtmlAttribute(username)%>"
                                            class="form-control required usrName usrNameLength">
                                 </div>
+                                <div class="field"></div>
+                                    <input id="numOfSubmission" name="numOfSubmission" type="hidden"
+                                           value="<%=numOfSubmission%>"
+                                           class="form-control required usrName usrNameLength">
+                                </div>
                                 <div class="two fields">
                                     <div class="required field">
                                         <label for="password" class="control-label">
@@ -646,7 +656,7 @@
                                 </div>
                                 <div class="ui divider hidden"></div>
                                 <div class="align-right buttons">
-                                    <a href="#" onclick="goBack(event)" class="ui button secondary">
+                                    <a href="javascript:goBack()" class="ui button secondary">
                                         <%=IdentityManagementEndpointUtil.i18n(recoveryResourceBundle, "Cancel")%>
                                     </a>
                                     <button id="registrationSubmit"
@@ -764,9 +774,13 @@
             }
         });
 
-        function goBack(event) {
-            event.preventDefault();
-            window.history.back();
+        function goBack() {
+            // Update the goback function to bypass the number of submission.
+            if ("<%=numOfSubmission%>" == null || "<%=numOfSubmission%>" == "null") {
+                window.history.back();
+            } else {
+                window.history.go(((parseInt("<%= numOfSubmission %>") + 1) * -1));
+            }
         }
 
         function onCompleted() {
@@ -900,7 +914,8 @@
                     $("html, body").animate({scrollTop: error_msg.offset().top}, 'slow');
                     return false;
                 }
-
+                // Make sure the number of submission is updated.
+                $("#numOfSubmission").val("<%=numOfSubmission%>");
                 var password = $("#password").val();
                 var password2 = $("#password2").val();
 

@@ -102,6 +102,16 @@
             boolean isSelfRegistrationWithVerification =
                     Boolean.parseBoolean(request.getParameter("isSelfRegistrationWithVerification"));
 
+            if (isSelfRegistrationWithVerification) {
+                // Increment the number of submissions.
+                if (request.getParameter("numOfSubmission") == null || "null".equals(request.getParameter("numOfSubmission"))) {
+                    request.setAttribute("numOfSubmission", "1");
+                } else {
+                    Integer numOfSubmission = Integer.parseInt(request.getParameter("numOfSubmission"));
+                    request.setAttribute("numOfSubmission", String.valueOf(numOfSubmission + 1));
+                }
+            }
+
             String userLocale = request.getHeader("Accept-Language");
             String username = request.getParameter("username");
             String password = request.getParameter("password");
