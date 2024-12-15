@@ -53,7 +53,7 @@
     String ERROR_CODE = "errorCode";
     String PASSWORD_RESET_PAGE = "password-reset.jsp";
     String AUTO_LOGIN_COOKIE_NAME = "ALOR";
-    String AUTO_LOGIN_FLOW_TYPE = "RECOVERY";
+    String AUTO_LOGIN_FLOW_TYPE = "ACCOUNT_RECOVERY";
     String AUTO_LOGIN_COOKIE_DOMAIN = "AutoLoginCookieDomain";
     String RECOVERY_TYPE_INVITE = "invite";
     String passwordHistoryErrorCode = "22001";

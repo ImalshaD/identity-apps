@@ -94,7 +94,7 @@
             String passwordPatternErrorCode = "20035";
             String AUTO_LOGIN_COOKIE_NAME = "ALOR";
             String AUTO_LOGIN_COOKIE_DOMAIN = "AutoLoginCookieDomain";
-            String AUTO_LOGIN_FLOW_TYPE = "SIGNUP";
+            String AUTO_LOGIN_FLOW_TYPE = "SELF_SIGNUP";
             PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();
             Boolean isAutoLoginEnable = preferenceRetrievalClient.checkAutoLoginAfterSelfRegistrationEnabled(tenantDomain);
             Boolean isSelfRegistrationWithVerificationEnabled = preferenceRetrievalClient.checkSelfRegistrationLockOnCreation(tenantDomain);
