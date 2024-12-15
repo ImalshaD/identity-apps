@@ -25,6 +25,7 @@
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.model.Property" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.model.ResetPasswordRequest" %>
 <%@ page import="org.wso2.carbon.identity.core.util.IdentityTenantUtil" %>
+<%@ page import="org.wso2.carbon.identity.core.util.IdentityUtil" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.net.URISyntaxException" %>
 <%@ page import="java.net.URLEncoder" %>
@@ -34,7 +35,6 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ page import="java.util.Base64" %>
-<%@ page import="org.wso2.carbon.core.util.SignatureUtil" %>
 <%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.wso2.carbon.identity.recovery.util.Utils" %>
@@ -117,7 +117,7 @@
 
                 JSONObject cookieValueInJson = new JSONObject();
                 cookieValueInJson.put("content", content);
-                String signature = Base64.getEncoder().encodeToString(SignatureUtil.doSignature(content));
+                String signature = Base64.getEncoder().encodeToString(IdentityUtil.signWithTenantKey(content, user.getTenantDomain()));
                 cookieValueInJson.put("signature", signature);
                 String cookieValue = Base64.getEncoder().encodeToString(cookieValueInJson.toString().getBytes());
 

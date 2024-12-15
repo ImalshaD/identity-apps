@@ -20,7 +20,6 @@
 <%@ page import="org.apache.commons.collections.map.HashedMap" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.wso2.carbon.core.SameSiteCookie" %>
-<%@ page import="org.wso2.carbon.core.util.SignatureUtil" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointConstants" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementServiceUtil" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.ApiException" %>
@@ -276,7 +275,7 @@
 
                     JSONObject cookieValueInJson = new JSONObject();
                     cookieValueInJson.put("content", content);
-                    String signature = Base64.getEncoder().encodeToString(SignatureUtil.doSignature(content));
+                    String signature = Base64.getEncoder().encodeToString(IdentityUtil.signWithTenantKey(content, user.getTenantDomain()));
                     cookieValueInJson.put("signature", signature);
                     String cookieValue = Base64.getEncoder().encodeToString(cookieValueInJson.toString().getBytes());
 
