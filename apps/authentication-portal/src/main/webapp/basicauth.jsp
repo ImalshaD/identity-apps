@@ -194,10 +194,44 @@
         }
         selfRegistrationRequest.setUser(userDTO);
 
-        PropertyDTO propertyDTO = new PropertyDTO();
-        propertyDTO.setKey("RecoveryScenario");
-        propertyDTO.setValue("SELF_SIGN_UP");
-        selfRegistrationRequest.getProperties().add(propertyDTO);
+        PropertyDTO recoveryScenarioProperty = new PropertyDTO();
+        recoveryScenarioProperty.setKey("RecoveryScenario");
+        recoveryScenarioProperty.setValue("SELF_SIGN_UP");
+
+        PropertyDTO callbackProperty = new PropertyDTO();
+        callbackProperty.setKey("callback");
+
+        String urlWithoutEncoding = null;
+        try {
+            ApplicationDataRetrievalClient applicationDataRetrievalClient = new ApplicationDataRetrievalClient();
+            urlWithoutEncoding = applicationDataRetrievalClient.getApplicationAccessURL(tenantDomain,
+            request.getParameter("sp"));
+            urlWithoutEncoding = IdentityManagementEndpointUtil.replaceUserTenantHintPlaceholder(
+                    urlWithoutEncoding, userTenantDomain);
+        } catch (ApplicationDataRetrievalClientException e) {
+            // Ignored and fallback to login page URL.
+        }
+
+        if (StringUtils.isBlank(urlWithoutEncoding)) {
+            String scheme = request.getScheme();
+            String serverName = request.getServerName();
+            int serverPort = request.getServerPort();
+            String uri = (String) request.getAttribute(JAVAX_SERVLET_FORWARD_REQUEST_URI);
+            String prmstr = URLDecoder.decode(((String) request.getAttribute(JAVAX_SERVLET_FORWARD_QUERY_STRING)), UTF_8);
+
+            // Remove resend_user from params to avoid error.
+            String regex = "(\\bresend_username=[^&]*&?)"; 
+            prmstr = prmstr.replaceAll(regex, ""); 
+            
+            urlWithoutEncoding = scheme + "://" + serverName + ":" + serverPort + uri + "?" + prmstr;
+        }
+
+        String urlEncodedURL = URLEncoder.encode(urlWithoutEncoding, UTF_8);
+
+        callbackProperty.setValue(urlEncodedURL);
+
+        selfRegistrationRequest.getProperties().add(recoveryScenarioProperty);
+        selfRegistrationRequest.getProperties().add(callbackProperty);
 
         // We have to send an empty property for the client to work properly.
         PropertyDTO dummyPropertyDTO = new PropertyDTO();
