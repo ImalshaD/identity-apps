@@ -167,7 +167,7 @@
                                     "Enter.your.username.here")%>
                             </label>
                             <input id="username" name="username" type="text" required
-                                <% if(skipSignUpEnableCheck) {%> value="<%=Encode.forHtmlAttribute(username)%>" <%}%>>
+                                <% if(skipSignUpEnableCheck && StringUtils.isNotBlank(username)) {%> value="<%=Encode.forHtmlAttribute(username)%>" <%}%>>
                         </div>
 
                         <% if (isSaaSApp) { %>
