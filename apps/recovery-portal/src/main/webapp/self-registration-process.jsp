@@ -20,6 +20,7 @@
 <%@ page import="org.apache.commons.collections.map.HashedMap" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.wso2.carbon.core.SameSiteCookie" %>
+<%@ page import="org.wso2.carbon.core.util.SignatureUtil" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointConstants" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementServiceUtil" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.ApiException" %>
@@ -93,7 +94,7 @@
             String passwordPatternErrorCode = "20035";
             String AUTO_LOGIN_COOKIE_NAME = "ALOR";
             String AUTO_LOGIN_COOKIE_DOMAIN = "AutoLoginCookieDomain";
-            String AUTO_LOGIN_FLOW_TYPE = "SELF_SIGNUP";
+            String AUTO_LOGIN_FLOW_TYPE = "SIGNUP";
             PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();
             Boolean isAutoLoginEnable = preferenceRetrievalClient.checkAutoLoginAfterSelfRegistrationEnabled(tenantDomain);
             Boolean isSelfRegistrationWithVerificationEnabled = preferenceRetrievalClient.checkSelfRegistrationLockOnCreation(tenantDomain);
@@ -275,7 +276,7 @@
 
                     JSONObject cookieValueInJson = new JSONObject();
                     cookieValueInJson.put("content", content);
-                    String signature = Base64.getEncoder().encodeToString(IdentityUtil.signWithTenantKey(content, user.getTenantDomain()));
+                    String signature = Base64.getEncoder().encodeToString(SignatureUtil.doSignature(content));
                     cookieValueInJson.put("signature", signature);
                     String cookieValue = Base64.getEncoder().encodeToString(cookieValueInJson.toString().getBytes());
 

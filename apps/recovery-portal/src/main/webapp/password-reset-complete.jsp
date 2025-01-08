@@ -25,7 +25,6 @@
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.model.Property" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.model.ResetPasswordRequest" %>
 <%@ page import="org.wso2.carbon.identity.core.util.IdentityTenantUtil" %>
-<%@ page import="org.wso2.carbon.identity.core.util.IdentityUtil" %>
 <%@ page import="java.io.File" %>
 <%@ page import="java.net.URISyntaxException" %>
 <%@ page import="java.net.URLEncoder" %>
@@ -35,6 +34,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="javax.servlet.http.Cookie" %>
 <%@ page import="java.util.Base64" %>
+<%@ page import="org.wso2.carbon.core.util.SignatureUtil" %>
 <%@ page import="org.json.simple.JSONObject" %>
 <%@ page import="org.owasp.encoder.Encode" %>
 <%@ page import="org.wso2.carbon.identity.recovery.util.Utils" %>
@@ -53,7 +53,7 @@
     String ERROR_CODE = "errorCode";
     String PASSWORD_RESET_PAGE = "password-reset.jsp";
     String AUTO_LOGIN_COOKIE_NAME = "ALOR";
-    String AUTO_LOGIN_FLOW_TYPE = "ACCOUNT_RECOVERY";
+    String AUTO_LOGIN_FLOW_TYPE = "RECOVERY";
     String AUTO_LOGIN_COOKIE_DOMAIN = "AutoLoginCookieDomain";
     String RECOVERY_TYPE_INVITE = "invite";
     String passwordHistoryErrorCode = "22001";
@@ -117,7 +117,7 @@
 
                 JSONObject cookieValueInJson = new JSONObject();
                 cookieValueInJson.put("content", content);
-                String signature = Base64.getEncoder().encodeToString(IdentityUtil.signWithTenantKey(content, user.getTenantDomain()));
+                String signature = Base64.getEncoder().encodeToString(SignatureUtil.doSignature(content));
                 cookieValueInJson.put("signature", signature);
                 String cookieValue = Base64.getEncoder().encodeToString(cookieValueInJson.toString().getBytes());
 
