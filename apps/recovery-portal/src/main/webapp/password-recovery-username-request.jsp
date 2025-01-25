@@ -101,14 +101,6 @@
                     <%-- page content --%>
                     <div class="segment-form">
                         <form class="ui large form" action="recoverpassword.do" method="post" id="tenantBasedRecovery">
-                            <%
-                                String ui_locales = request.getParameter("ui_locales");
-                                if (StringUtils.isNotBlank(ui_locales)) {
-                            %>
-                                    <input id="ui_locales" name="ui_locales" type="hidden" value="<%=Encode.forHtmlAttribute(ui_locales)%>"/>
-                            <%
-                                }
-                            %>
                             <h2>
                                 <%=IdentityManagementEndpointUtil.i18n(recoveryResourceBundle, "Start.password.recovery")%>
                             </h2>
@@ -137,7 +129,6 @@
                                 <%
                                     }
                                 %>
-
                                 <input id="isSaaSApp" name="isSaaSApp" value="<%= isSaaSApp %>" type="hidden">
                             </div>
                             <div class="ui message info">

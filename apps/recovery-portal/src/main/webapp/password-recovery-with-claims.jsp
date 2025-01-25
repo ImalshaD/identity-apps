@@ -189,14 +189,6 @@
                                     "Username")%></label>
                             <input id="username" type="text" name="username" class="form-control claims">
                         </div>
-                        <%
-                            String ui_locales = request.getParameter("ui_locales");
-                            if (StringUtils.isNotBlank(ui_locales)) {
-                        %>
-                                <input id="ui_locales" name="ui_locales" type="hidden" value="<%=Encode.forHtmlAttribute(ui_locales)%>"/>
-                        <%
-                            }
-                        %>
                         <% if (isFirstNameInClaims || isLastNameInClaims) { %>
                         <div class="field">
                             <label><%=IdentityManagementEndpointUtil.i18n(recoveryResourceBundle, "name")%></label>
