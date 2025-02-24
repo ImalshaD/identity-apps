@@ -39,10 +39,14 @@ export class URLUtils {
      * Checks if the passed in url is a valid Http URL.
      *
      * @param {string} url - URL to evaluate.
-     *
-     * @return {boolean} True if the url is a http url.
+     * @param {boolean} forceRegexValidaion - Flag to use regex pattern validation (default: true).
+     * 
+     * @return {boolean} True if the URL is a valid HTTP URL.
      */
-    public static isHttpUrl(url: string): boolean {
+    public static isHttpUrl(url: string, forceRegexValidaion: boolean = true): boolean {
+        if (!forceRegexValidaion) {
+            return url.trim().startsWith("http://");
+        }
         return !!url.trim().match(PatternConstants.HTTP_URL_REGEX_PATTERN);
     }
 
@@ -50,10 +54,14 @@ export class URLUtils {
      * Checks if the passed in url is a valid Https URL.
      *
      * @param {string} url - URL to evaluate.
-     *
-     * @return {boolean} True if the url is a https url.
+     * @param {boolean} forceRegexValidaion - Flag to use regex pattern validation (default: true).
+     * 
+     * @return {boolean} True if the URL is a valid HTTPS URL.
      */
-    public static isHttpsUrl(url: string): boolean {
+    public static isHttpsUrl(url: string, forceRegexValidaion: boolean = true): boolean {
+        if (!forceRegexValidaion) {
+            return url.trim().startsWith("https://");
+        }
         return !!url.trim().match(PatternConstants.HTTPS_URL_REGEX_PATTERN);
     }
 

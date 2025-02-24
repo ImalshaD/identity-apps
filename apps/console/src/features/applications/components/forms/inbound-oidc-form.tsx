@@ -1364,8 +1364,8 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                                             !(isMobileApplication)
                                             && CustomApplicationTemplate?.id !== template?.id
                                             && !(URLUtils.isURLValid(value, true) &&
-                                                (URLUtils.isHttpUrl(value)
-                                                || URLUtils.isHttpsUrl(value)))
+                                                (URLUtils.isHttpUrl(value, false)
+                                                || URLUtils.isHttpsUrl(value, false)))
                                         ) {
 
                                             return false;
@@ -1446,8 +1446,8 @@ export const InboundOIDCForm: FunctionComponent<InboundOIDCFormPropsInterface> =
                                     }
                                     validation={ (value: string) => {
 
-                                        if (!(((URLUtils.isHttpsUrl(value) || URLUtils.isHttpUrl(value))) &&
-                                            URLUtils.isAValidOriginUrl(value))) {
+                                        if (!(((URLUtils.isHttpsUrl(value, false) || URLUtils.isHttpUrl(value, false)))
+                                            && URLUtils.isAValidOriginUrl(value))) {
 
                                             return false;
                                         }
