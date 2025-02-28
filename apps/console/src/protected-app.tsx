@@ -506,7 +506,7 @@ export const ProtectedApp: FunctionComponent<AppPropsInterface> = (): ReactEleme
                         endpoints: {
                             authorizationEndpoint: authorizationEndpoint,
                             checkSessionIframe: oidcSessionIframeEndpoint,
-                            endSessionEndpoint: logoutUrl.split("?")[ 0 ],
+                            endSessionEndpoint: logoutUrl?.split("?")[ 0 ],
                             tokenEndpoint: tokenEndpoint
                         },
                         signOutRedirectURL: logoutRedirectUrl
