@@ -68,6 +68,8 @@
                 if (unlockTime != null) {
                   errorMessage = String.format(IdentityManagementEndpointUtil.i18n(resourceBundle,"error.user.account.temporarly.locked"), unlockTime);
                 }
+            } else if (errorMessage.equalsIgnoreCase("resent.count.exceeded")) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.resent.count.exceeded");
             } else if (SMSOTPUtils.useInternalErrorCodes()) {
                 String httpCode = URLDecoder.decode(errorMessage, SMSOTPConstants.CHAR_SET_UTF_8);
                 errorMessage = SMSOTPConstants.ErrorMessage.getMappedErrorMessage(httpCode);
