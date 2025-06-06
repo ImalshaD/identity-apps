@@ -262,6 +262,12 @@
                 if($registerForm){
                     $registerForm.data("submitted", false);
                 }
+                <% if (reCaptchaEnabled) { %>
+                    // Reset the reCAPTCHA widget on page load from back/forward cache.
+                    if (typeof grecaptcha !== 'undefined') {
+                        grecaptcha.reset();
+                    }
+                <% } %>
             }
         });
 
