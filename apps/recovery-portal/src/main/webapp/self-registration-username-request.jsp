@@ -185,7 +185,8 @@
                             for (Map.Entry<String, String[]> entry : requestMap.entrySet()) {
                                 String key = Encode.forHtmlAttribute(entry.getKey());
                                 String value = Encode.forHtmlAttribute(entry.getValue()[0]);
-                                if (StringUtils.equalsIgnoreCase("reCaptcha", key)) {
+                                if (StringUtils.equalsIgnoreCase("reCaptcha", key) ||
+                                    StringUtils.equalsIgnoreCase("g-recaptcha-response", key)) {
                                     continue;
                                 } %>
                         <div class="field">
@@ -275,6 +276,17 @@
 
         // Handle form submission preventing double submission.
         $(document).ready(function(){
+            <%
+                if (reCaptchaEnabled && error) {
+            %>
+                // Reset the reCAPTCHA widget on page load if there was an error.
+                if (typeof grecaptcha !== 'undefined') {
+                    grecaptcha.reset();
+                }
+            <%
+                }
+            %>
+
             $.fn.preventDoubleSubmission = function() {
                 $(this).on("submit", function(e){
                     var $form = $(this);
@@ -308,6 +320,12 @@
                                 $("#error-msg").text("Username pattern policy violated");
                                 $("#error-msg").show();
                                 $("#username").val("");
+                                <% if (reCaptchaEnabled) { %>
+                                    // Reset on client-side errors to discard any aging token.
+                                    if (typeof grecaptcha !== 'undefined') {
+                                        grecaptcha.reset();
+                                    }
+                                <% } %>
                                 return;
                             }
                         }
