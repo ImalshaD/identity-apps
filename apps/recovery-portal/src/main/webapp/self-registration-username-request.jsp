@@ -264,7 +264,7 @@
                 }
                 <% if (reCaptchaEnabled) { %>
                     // Reset the reCAPTCHA widget on page load from back/forward cache.
-                    if (typeof grecaptcha !== 'undefined') {
+                    if (typeof grecaptcha !== "undefined") {
                         grecaptcha.reset();
                     }
                 <% } %>
@@ -282,16 +282,12 @@
 
         // Handle form submission preventing double submission.
         $(document).ready(function(){
-            <%
-                if (reCaptchaEnabled && error) {
-            %>
+            <% if (reCaptchaEnabled && error) { %>
                 // Reset the reCAPTCHA widget on page load if there was an error.
-                if (typeof grecaptcha !== 'undefined') {
+                if (typeof grecaptcha !== "undefined") {
                     grecaptcha.reset();
                 }
-            <%
-                }
-            %>
+            <% } %>
 
             $.fn.preventDoubleSubmission = function() {
                 $(this).on("submit", function(e){
@@ -328,7 +324,7 @@
                                 $("#username").val("");
                                 <% if (reCaptchaEnabled) { %>
                                     // Reset on client-side errors to discard any aging token.
-                                    if (typeof grecaptcha !== 'undefined') {
+                                    if (typeof grecaptcha !== "undefined") {
                                         grecaptcha.reset();
                                     }
                                 <% } %>
