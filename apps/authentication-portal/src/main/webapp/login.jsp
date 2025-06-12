@@ -182,22 +182,22 @@
     String authenticators = request.getParameter("authenticators");
     
     String loginContextRequestUrl = logincontextURL +
-            "?sessionDataKey=" + Encode.forUriComponent(isNullOrLiteralNull(sessionDataKey) ? "" : sessionDataKey) +
-            "&application=" + Encode.forUriComponent(isNullOrLiteralNull(appName) ? "" : appName) +
-            "&authenticators=" + Encode.forUriComponent(isNullOrLiteralNull(authenticators) ? "" : authenticators);
+            "?sessionDataKey=" + sanitizeAndEncode(sessionDataKey) +
+            "&application=" + sanitizeAndEncode(appName) +
+            "&authenticators=" + sanitizeAndEncode(authenticators);
     
     if (!IdentityTenantUtil.isTenantQualifiedUrlsEnabled()) {
         // We need to send the tenant domain as a query param only in non tenant qualified URL mode.
-        loginContextRequestUrl += "&tenantDomain=" + Encode.forUriComponent(isNullOrLiteralNull(tenantDomain) ? "" : tenantDomain);
+        loginContextRequestUrl += "&tenantDomain=" + sanitizeAndEncode(tenantDomain);
     }
 
     String t = request.getParameter("t");
     String ut = request.getParameter("ut");
     if (StringUtils.isNotBlank(t)) {
-        loginContextRequestUrl += "&t=" + Encode.forUriComponent(isNullOrLiteralNull(t) ? "" : t);
+        loginContextRequestUrl += "&t=" + sanitizeAndEncode(t);
     }
     if (StringUtils.isNotBlank(ut)) {
-        loginContextRequestUrl += "&ut=" + Encode.forUriComponent(isNullOrLiteralNull(ut) ? "" : ut);
+        loginContextRequestUrl += "&ut=" + sanitizeAndEncode(ut);
     }
 
     if (StringUtils.isNotBlank(usernameIdentifier)) {
@@ -218,8 +218,12 @@
     }
 %>
 <%!
-    private boolean isNullOrLiteralNull(String value) {
-        return StringUtils.isBlank(value) || StringUtils.equalsIgnoreCase(StringUtils.trim(value), "null");
+    private String sanitizeAndEncode(String value) {
+        
+        String sanitized = StringUtils.isBlank(value) || StringUtils.equalsIgnoreCase(StringUtils.trim(value), "null")
+                ? ""
+                : value;
+        return Encode.forUriComponent(sanitized);
     }
 %>
 
