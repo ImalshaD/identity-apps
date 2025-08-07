@@ -396,6 +396,30 @@ export class GovernanceConnectorUtils {
             {
                 connectors: [
                     {
+                        description: "Define security policies by mapping user actions and API " +
+                            "access to specific Levels of Assurance (LoA).",
+                        header: "LoA Configurations",
+                        id: ServerConfigurationsConstants.LOA_CONFIGURATIONS_CONNECTOR_ID,
+                        route: AppConstants.getPaths()
+                            .get("GOVERNANCE_CONNECTOR_EDIT")
+                            .replace(
+                                ":categoryId",
+                                ServerConfigurationsConstants.SECURITY_POLICIES_CATEGORY_ID
+                            )
+                            .replace(
+                                ":connectorId",
+                                ServerConfigurationsConstants.LOA_CONFIGURATIONS_CONNECTOR_ID
+                            ),
+                        testId: "loa-configurations-card"
+                    }
+                ],
+                displayOrder: 2,
+                id: "security-policies",
+                title: "Security Policies"
+            },
+            {
+                connectors: [
+                    {
                         description: "Configure settings for SAML2 Web Single Sign-On functionality.",
                         header: I18n.instance.t("saml2Config:title"),
                         id: ServerConfigurationsConstants.SAML2_SSO_CONNECTOR_ID,

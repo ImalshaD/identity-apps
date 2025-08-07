@@ -299,6 +299,22 @@ export const governanceConnectors: governanceConnectorsNS = {
                 }
             }
         },
+        securityPolicies: {
+            name: "Security Policies",
+            description: "Configure security policies.",
+            connectors: {
+                loaConfigurations: {
+                    friendlyName: "LoA Configurations",
+                    description: "Configure LoA configurations.",
+                    title: "LoA Configurations",
+                    properties: {
+                        enableLoA: {
+                            label: "Enable LoA"
+                        }
+                    }
+                }
+            }
+        },
         accountManagement : {
             name: "Account Management",
             description: "Configure account management settings.",
@@ -464,7 +480,8 @@ export const governanceConnectors: governanceConnectorsNS = {
                             label: "Admin forced password reset code expiry time"
                         }
                     }
-                }
+                },
+                
             }
         },
         otherSettings : {

@@ -19,3 +19,4 @@
 export * from "./governance-connectors";
 export * from "./connector-edit-page";
 export * from "./connector-listing-page";
+export * from "./loa-configurations-page";

@@ -1100,6 +1100,32 @@ export const getAppViewRoutes = (): RouteInterface[] => {
                 {
                     component: lazy(() =>
                         import(
+                            "@wso2is/admin.server-configurations.v1/" +
+                            "pages/loa-configurations-page"
+                        )
+                    ),
+                    exact: true,
+                    icon: {
+                        icon: getSidePanelIcons().childIcon
+                    },
+                    id: "loa-configurations",
+                    name: "LoA Configurations",
+                    path: AppConstants.getPaths()
+                        .get("GOVERNANCE_CONNECTOR_EDIT")
+                        .replace(
+                            ":categoryId",
+                            ServerConfigurationsConstants.SECURITY_POLICIES_CATEGORY_ID
+                        )
+                        .replace(
+                            ":connectorId",
+                            ServerConfigurationsConstants.LOA_CONFIGURATIONS_CONNECTOR_ID
+                        ),
+                    protected: true,
+                    showOnSidePanel: false
+                },
+                {
+                    component: lazy(() =>
+                        import(
                             "@wso2is/admin.server-configurations.v1/pages/connector-edit-page"
                         )
                     ),

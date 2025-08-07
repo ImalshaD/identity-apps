@@ -464,4 +464,10 @@ export class ServerConfigurationsConstants {
     public static readonly SIFT_CONNECTOR_ID: string = "c2lmdC1jb25maWd1cmF0aW9u";
     public static readonly LOGIN_ATTEMPT_SECURITY: string = "login-attempt-security";
     public static readonly SIFT_CONNECTOR_API_KEY_PROPERTY: string = "__secret__.sift.api.key";
+
+    /**
+     * Security Policies Category Constants.
+     */
+    public static readonly SECURITY_POLICIES_CATEGORY_ID: string = "security-policies";
+    public static readonly LOA_CONFIGURATIONS_CONNECTOR_ID: string = "loa-configurations";
 }

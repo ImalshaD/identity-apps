@@ -355,6 +355,22 @@ export interface governanceConnectorsNS {
                 };
             };
         };
+        securityPolicies: {
+            name: string;
+            description: string;
+            connectors: {
+                loaConfigurations: {
+                    friendlyName: string;
+                    description: string;
+                    title: string;
+                    properties: {
+                        enableLoA: {
+                            label: string;
+                        };
+                    };
+                };
+            };
+        };
         accountManagement: {
             name: string;
             description: string;
