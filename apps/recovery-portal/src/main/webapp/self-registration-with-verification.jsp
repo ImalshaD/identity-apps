@@ -308,6 +308,13 @@
 
                             <div class="">
                                 <% if (error) { %>
+                                    <% if (reCaptchaEnabled) { %>
+                                    <script>
+                                        if (typeof grecaptcha !== "undefined") {
+                                            grecaptcha.reset();
+                                        }
+                                    </script>
+                                    <% } %>
                                 <div class="ui negative message" id="server-error-msg">
                                     <%=IdentityManagementEndpointUtil.i18nBase64(recoveryResourceBundle, errorMsg)%>
                                 </div>
@@ -797,6 +804,9 @@
 
                     if (fields.length > 0) {
                         fields.forEach(function(field) {
+                            if (field.name === "g-recaptcha-response") {
+                                return;
+                            }
                             document.getElementsByName(field.name)[0].value = field.value;
                         })
                     }
