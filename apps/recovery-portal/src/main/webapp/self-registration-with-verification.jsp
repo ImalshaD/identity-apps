@@ -47,6 +47,10 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.TreeMap" %>
 <%@ page import="org.json.JSONObject" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.Collections" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.HashMap" %>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
@@ -456,6 +460,32 @@
                                 </div>
                                 <% }
                                 }%>
+                                <%
+                                    List<Claim> claimList = new ArrayList<>(Arrays.asList(claims));
+
+                                    // Check if any claim has null displayOrder.
+                                    boolean hasNullDisplayOrder = false;
+                                    for (Claim claim : claims) {
+                                        if (claim.getDisplayOrder() == null) {
+                                            hasNullDisplayOrder = true;
+                                            break;
+                                        }
+                                    }
+
+                                    // Sort claims before rendering if all claims have non-null displayOrder.
+                                    if (!hasNullDisplayOrder) {
+                                        Collections.sort(claimList, new Comparator<Claim>() {
+                                            @Override
+                                            public int compare(Claim c1, Claim c2) {
+                                                int d1 = Integer.parseInt(c1.getDisplayOrder());
+                                                int d2 = Integer.parseInt(c2.getDisplayOrder());
+                                                return Integer.compare(d1, d2);
+                                            }
+                                        });
+                                    }
+
+                                    claims = claimList.toArray(new Claim[0]);
+                                %>
                                 <%
                                     }
                                     List<String> missingClaims = null;
