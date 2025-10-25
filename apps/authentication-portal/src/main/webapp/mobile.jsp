@@ -191,7 +191,7 @@
                               +'<div class="ui divider hidden"></div>';
                     } else if (<%=validateMobileNumberFormat%> && !(mobileNumber.match("<%=Encode.forJavaScriptAttribute(mobileRegex)%>"))) {
                        document.getElementById('alertDiv').innerHTML
-                          = '<div id="error-msg" class="ui negative message"><%=Encode.forHtmlAttribute(mobileRegexPolicyValidationErrorMessage)%></div>'
+                          = '<div id="error-msg" class="ui negative message"><%=Encode.forHtml(mobileRegexPolicyValidationErrorMessage)%></div>'
                             +'<div class="ui divider hidden"></div>';
                     } else {
                         $('#pin_form').submit();
