@@ -188,7 +188,7 @@
                 $('#update').click(function() {
                     var mobileNumber = document.getElementById("MOBILE_NUMBER").value;
                     var regexPattern = document.getElementById('regexData').dataset.regex;
-                    // replace double backslashes with single backslash to reset the escape characters
+                    // decode HTML-encoded backslashes for use in RegExp constructor
                     regexPattern = regexPattern.replace(/\\\\/g, "\\");
                     var regexObj = new RegExp(regexPattern);
                     if (mobileNumber == "") {
