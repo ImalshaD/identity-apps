@@ -188,14 +188,14 @@
                 $('#update').click(function() {
                     var mobileNumber = document.getElementById("MOBILE_NUMBER").value;
                     var regexPattern = document.getElementById('regexData').dataset.regex;
+                    // Replicate javascript string literal parsing to keep backward compatibility.
+                    let stringParsedRegexPattern = regexPattern.replace(/\\([^bfnrtv0xu\'\"\\])/g, '$1');
                     // decode HTML-encoded backslashes for use in RegExp constructor
-                    regexPattern = regexPattern.replace(/\\\\/g, "\\");
-                    var regexObj = new RegExp(regexPattern);
                     if (mobileNumber == "") {
                         document.getElementById('alertDiv').innerHTML
                             = '<div id="error-msg" class="ui negative message">Please enter the mobile number!</div>'
                               +'<div class="ui divider hidden"></div>';
-                    } else if (<%=validateMobileNumberFormat%> && !(regexObj.test(mobileNumber))) {
+                    } else if (<%=validateMobileNumberFormat%> && !(mobileNumber.match(stringParsedRegexPattern))) {
                        document.getElementById('alertDiv').innerHTML
                           = '<div id="error-msg" class="ui negative message"><%=Encode.forHtml(mobileRegexPolicyValidationErrorMessage)%></div>'
                             +'<div class="ui divider hidden"></div>';
