@@ -34,6 +34,7 @@
 <%@ page import="static org.wso2.carbon.identity.application.authentication.endpoint.util.Constants.AUTHENTICATION_MECHANISM_NOT_CONFIGURED" %>
 <%@ page import="static org.wso2.carbon.identity.application.authentication.endpoint.util.Constants.ENABLE_AUTHENTICATION_WITH_REST_API" %>
 <%@ page import="static org.wso2.carbon.identity.application.authentication.endpoint.util.Constants.ERROR_WHILE_BUILDING_THE_ACCOUNT_RECOVERY_ENDPOINT_URL" %>
+<%@ page import="static org.wso2.carbon.identity.application.authentication.framework.util.FrameworkConstants.JSAttributes.JS_IDENTIFIER_FIRST_USER_INPUT" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.IdentityProviderDataRetrievalClient" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.IdentityProviderDataRetrievalClientException" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointConstants" %>
@@ -279,7 +280,15 @@
                 <h3 class="ui header ellipsis">
                     <% if (isIdentifierFirstLogin(inputType) || isLoginHintAvailable(inputType)) { %>
                         <div class="display-inline"><%=AuthenticationEndpointUtil.i18n(resourceBundle, "welcome") + " "%></div>
-                        <div id="user-name-label" class="display-inline" data-position="top left" data-variation="inverted" data-content="<%=Encode.forHtmlAttribute(usernameIdentifier)%>"><%=Encode.forHtmlContent(usernameIdentifier)%></div>
+                        <div
+                            id="user-name-label"
+                            class="display-inline"
+                            data-position="top left"
+                            data-variation="inverted"
+                            data-content="<%=Encode.forHtmlAttribute(request.getParameter(JS_IDENTIFIER_FIRST_USER_INPUT))%>"
+                        >
+                            <%=Encode.forHtmlContent(request.getParameter(JS_IDENTIFIER_FIRST_USER_INPUT))%>
+                        </div>
                     <% } else { %>
                         <%=AuthenticationEndpointUtil.i18n(resourceBundle, "login")%>
                     <% } %>
