@@ -37,6 +37,7 @@
 
     String errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry");
     String authenticationFailed = "false";
+    boolean isErrorFallbackLocale = !userLocale.toLanguageTag().equals("en_US");
 
     if (Boolean.parseBoolean(request.getParameter(Constants.AUTH_FAILURE))) {
         authenticationFailed = "true";
