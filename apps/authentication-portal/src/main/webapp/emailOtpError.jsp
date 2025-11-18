@@ -37,32 +37,31 @@
 
     String errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry");
     String authenticationFailed = "false";
-    boolean isErrorFallbackLocale = !userLocale.toLanguageTag().equals("en_US");
 
     if (Boolean.parseBoolean(request.getParameter(Constants.AUTH_FAILURE))) {
         authenticationFailed = "true";
 
         if (request.getParameter(Constants.AUTH_FAILURE_MSG) != null) {
-            errorMessage = request.getParameter(Constants.AUTH_FAILURE_MSG);
+            String error = request.getParameter(Constants.AUTH_FAILURE_MSG);
 
-            if (errorMessage.equalsIgnoreCase("authentication.fail.message")) {
+            if (error.equalsIgnoreCase("authentication.fail.message")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry");
-            } else if (errorMessage.equalsIgnoreCase("unable.send.code")) {
+            } else if (error.equalsIgnoreCase("unable.send.code")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.send.email");
-            } else if (errorMessage.equalsIgnoreCase("code.mismatch")) {
+            } else if (error.equalsIgnoreCase("code.mismatch")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.code.incorrect");
-            } else if (errorMessage.equalsIgnoreCase("emailotp.disable")) {
+            } else if (error.equalsIgnoreCase("emailotp.disable")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.emailOTP.disabled");
-            } else if (errorMessage.equalsIgnoreCase("directly.send.otp.disable")) {
+            } else if (error.equalsIgnoreCase("directly.send.otp.disable")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.user.not.found");
-            } else if (errorMessage.equalsIgnoreCase("user.account.locked")) {
+            } else if (error.equalsIgnoreCase("user.account.locked")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.user.account.locked");
                 String unlockTime = request.getParameter("unlockTime");
                 if (unlockTime != null) {
                     errorMessage = String.format(AuthenticationEndpointUtil.i18n(resourceBundle, "error.user.account.temporarly.locked"), unlockTime);
                 }
-            } else if (isErrorFallbackLocale) {
-                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry");
+            } else if (!error.equalsIgnoreCase(AuthenticationEndpointUtil.i18n(resourceBundle, error))) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, error);
             }
         }
     }
