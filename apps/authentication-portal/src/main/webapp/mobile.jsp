@@ -59,7 +59,7 @@
             String error = request.getParameter(Constants.AUTH_FAILURE_MSG);
 
             if (error.equalsIgnoreCase("authentication.fail.message")) {
-                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "authentication.failed.please.retry");
+                errorMessage = "Authentication Failed! Please Retry";
             } else if (!error.equalsIgnoreCase(AuthenticationEndpointUtil.i18n(resourceBundle, error))) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, error);
             }

@@ -77,6 +77,12 @@
 
             if (error.equalsIgnoreCase("authentication.fail.message")) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry.code.invalid");
+            }
+            if (error.equalsIgnoreCase("token.expired")) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.code.expired.resend");
+            }
+            if (error.equalsIgnoreCase("token.expired.email.sent")) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.token.expired.email.sent");
             } else if (!error.equalsIgnoreCase(AuthenticationEndpointUtil.i18n(resourceBundle, error))) {
                 errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, error);
             }

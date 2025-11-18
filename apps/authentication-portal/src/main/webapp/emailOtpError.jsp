@@ -61,6 +61,8 @@
                 if (unlockTime != null) {
                     errorMessage = String.format(AuthenticationEndpointUtil.i18n(resourceBundle, "error.user.account.temporarly.locked"), unlockTime);
                 }
+            } else if (isErrorFallbackLocale) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, "error.retry");
             }
         }
     }
