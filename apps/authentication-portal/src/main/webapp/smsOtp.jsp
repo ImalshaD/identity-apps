@@ -75,13 +75,15 @@
         authenticationFailed = "true";
 
         if (request.getParameter(Constants.AUTH_FAILURE_MSG) != null) {
-            errorMessage = request.getParameter(Constants.AUTH_FAILURE_MSG);
+            String error = request.getParameter(Constants.AUTH_FAILURE_MSG);
 
-            if (errorMessage.equalsIgnoreCase("authentication.fail.message")) {
+            if (error.equalsIgnoreCase("authentication.fail.message")) {
                 errorMessage = IdentityManagementEndpointUtil.i18n(resourceBundle,"error.retry");
             }
-            if (errorMessage.equalsIgnoreCase(SMSOTPConstants.TOKEN_EXPIRED_VALUE)) {
+            if (error.equalsIgnoreCase(SMSOTPConstants.TOKEN_EXPIRED_VALUE)) {
                 errorMessage = IdentityManagementEndpointUtil.i18n(resourceBundle,"error.code.expired.resend");
+            } else if (!error.equalsIgnoreCase(AuthenticationEndpointUtil.i18n(resourceBundle, error))) {
+                errorMessage = AuthenticationEndpointUtil.i18n(resourceBundle, error);
             }
         }
     }
