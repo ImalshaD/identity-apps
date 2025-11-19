@@ -20,6 +20,7 @@
 <%@ page import="org.apache.commons.collections.map.HashedMap" %>
 <%@ page import="org.apache.commons.lang.StringUtils" %>
 <%@ page import="org.wso2.carbon.core.SameSiteCookie" %>
+<%@ page import="org.wso2.carbon.identity.mgt.constants.SelfRegistrationStatusCodes" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointConstants" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementServiceUtil" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.ApiException" %>
@@ -146,6 +147,13 @@
                 request.setAttribute("error", true);
                 request.setAttribute("errorMsg", e.getMessage());
                 request.getRequestDispatcher("error.jsp").forward(request, response);
+                return;
+            }
+
+            Integer code = (Integer) request.getSession().getAttribute("userNameValidityStatusCode");
+            if (code != null && SelfRegistrationStatusCodes.ERROR_CODE_USER_ALREADY_EXISTS.equalsIgnoreCase(code.toString())) {
+                request.setAttribute("callback", callback);
+                request.getRequestDispatcher("self-registration-complete.jsp").forward(request, response);
                 return;
             }
 
