@@ -217,6 +217,11 @@
     if (StringUtils.isNotEmpty(EndpointConfigManager.getGoogleOneTapRestrictedBrowsers())) {
         restrictedBrowsersForGOT = EndpointConfigManager.getGoogleOneTapRestrictedBrowsers();
     }
+
+    String identifierFirstUserInput = request.getParameter(JS_IDENTIFIER_FIRST_USER_INPUT);
+    if (StringUtils.isBlank(identifierFirstUserInput) || identifierFirstUserInput == "null") {
+        identifierFirstUserInput = usernameIdentifier;
+    }
 %>
 <%!
     private String sanitizeAndEncode(String value) {
@@ -285,9 +290,9 @@
                             class="display-inline"
                             data-position="top left"
                             data-variation="inverted"
-                            data-content="<%=Encode.forHtmlAttribute(request.getParameter(JS_IDENTIFIER_FIRST_USER_INPUT))%>"
+                            data-content="<%=Encode.forHtmlAttribute(identifierFirstUserInput)%>"
                         >
-                            <%=Encode.forHtmlContent(request.getParameter(JS_IDENTIFIER_FIRST_USER_INPUT))%>
+                            <%=Encode.forHtmlContent(identifierFirstUserInput)%>
                         </div>
                     <% } else { %>
                         <%=AuthenticationEndpointUtil.i18n(resourceBundle, "login")%>
