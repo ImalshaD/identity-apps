@@ -1,7 +1,7 @@
 <%--
-  ~ Copyright (c) 2025, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~ Copyright (c) 2020-2025, WSO2 LLC. (https://www.wso2.com).
   ~
-  ~ WSO2 Inc. licenses this file to you under the Apache License,
+  ~ WSO2 LLC. licenses this file to you under the Apache License,
   ~ Version 2.0 (the "License"); you may not use this file except
   ~ in compliance with the License.
   ~ You may obtain a copy of the License at
@@ -23,7 +23,6 @@
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointConstants" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointUtil" %>
 <%@ page import="org.wso2.carbon.identity.application.authentication.endpoint.util.AuthenticationEndpointUtil" %>
-<%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.ApplicationDataRetrievalClient" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.PreferenceRetrievalClient" %>
 <%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.client.PreferenceRetrievalClientException" %>
 <%@ page import="java.io.File" %>
@@ -38,18 +37,19 @@
     String callback = IdentityManagementEndpointUtil.getStringValue(request.getParameter("callback"));
 
     boolean isValidCallBackURL = false;
+
     try {
         if (StringUtils.isNotBlank(callback)) {
             isValidCallBackURL = AuthenticationEndpointUtil.isSchemeSafeURL(callback);
             if (isValidCallBackURL) {
                 PreferenceRetrievalClient preferenceRetrievalClient = new PreferenceRetrievalClient();
-                isValidCallBackURL = preferenceRetrievalClient.checkIfRecoveryCallbackURLValid(tenantDomain,callback);
+                isValidCallBackURL = preferenceRetrievalClient.checkIfRecoveryCallbackURLValid(tenantDomain, callback);
             }
         }
     } catch (PreferenceRetrievalClientException e) {
         request.setAttribute("error", true);
         request.setAttribute("errorMsg", IdentityManagementEndpointUtil
-                .i18n(recoveryResourceBundle, "something.went.wrong.contact.admin"));
+            .i18n(recoveryResourceBundle, "something.went.wrong.contact.admin"));
         IdentityManagementEndpointUtil.addErrorInformation(request, e);
         request.getRequestDispatcher("error.jsp").forward(request, response);
         return;
