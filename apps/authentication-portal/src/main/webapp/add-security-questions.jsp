@@ -42,7 +42,8 @@
     String BUNDLE = "org.wso2.carbon.identity.application.authentication.endpoint.i18n.Resources";
     ResourceBundle resourceBundle = ResourceBundle.getBundle(BUNDLE, request.getLocale(), new
             EncodedControl(StandardCharsets.UTF_8.toString()));
-    String urlData = request.getParameter("data");
+    AuthenticationRequestWrapper authRequest = (AuthenticationRequestWrapper) request;
+    String urlData = authRequest.getAuthParameter("challengeQuestions");
     // Extract the challenge questions from the request and add them into an array
     String[] questionSets = null;
     if (urlData != null) {
