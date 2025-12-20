@@ -336,7 +336,7 @@
 
 <% if (Boolean.parseBoolean(loginFailed) && errorCode.equals(IdentityCoreConstants.USER_ACCOUNT_NOT_CONFIRMED_ERROR_CODE) && request.getParameter("resend_username") == null) { %>
     <div class="ui visible warning message" id="error-msg" data-testid="login-page-error-message">
-        <form action="login.do?resend_username=<%=Encode.forHtml(URLEncoder.encode(request.getParameter("failedUsername"), UTF_8))%>&<%=AuthenticationEndpointUtil.cleanErrorMessages(Encode.forJava(request.getQueryString()))%>" method="post" id="resendForm">
+        <form action="login.do?resend_username=<%=Encode.forHtml(URLEncoder.encode(request.getParameter("failedUsername"), UTF_8))%>&<%=Encode.forHtmlAttribute(AuthenticationEndpointUtil.cleanErrorMessages(request.getQueryString()))%>" method="post" id="resendForm">
             <%= AuthenticationEndpointUtil.i18n(resourceBundle, errorMessage) %>
 
             <div class="ui divider hidden"></div>
