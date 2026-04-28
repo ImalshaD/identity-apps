@@ -23,6 +23,7 @@
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.List" %>
 <%@ page import="org.apache.commons.text.StringEscapeUtils" %>
+<%@ page import="org.wso2.carbon.identity.mgt.endpoint.util.IdentityManagementEndpointUtil" %>
 <%@ taglib prefix="layout" uri="org.wso2.identity.apps.taglibs.layout.controller" %>
 
 <%@include file="includes/localize.jsp" %>
@@ -134,7 +135,7 @@
                         <div class="sixteen wide column">
                             <p>
                                 <%=AuthenticationEndpointUtil.i18n(resourceBundle, "fido.registration.info" )%>
-                                <a id="my-account-link">My Account.</a>
+                                <a target="_blank" id="my-account-link">My Account.</a>
                             </p>
                             <p>
                                 <% if (supportEmail != null && !supportEmail.isEmpty()) { %>
@@ -210,16 +211,13 @@
     <script type="text/javascript" src="libs/base64js/base64js-1.3.0.min.js"></script>
     <script type="text/javascript" src="libs/base64url.js"></script>
 
+    <%
+        String myAccountPortalUrl = IdentityManagementEndpointUtil.getUserPortalUrl(
+                application.getInitParameter("MyAccountURL"), tenantDomain);
+    %>
     <script type="text/javascript">
         $(document).ready(function () {
-            var myaccountUrl = '<%=application.getInitParameter("MyAccountURL")%>';
-            var tenantDomain = '<%=Encode.forJavaScriptBlock(tenantDomain)%>';
-
-            if (tenantDomain !== "" || tenantDomain !== "null") {
-                myaccountUrl = myaccountUrl + "/t/" + tenantDomain;
-            }
-
-            $("#my-account-link").attr("href", myaccountUrl +"/myaccount");
+            $("#my-account-link").attr("href", '<%=Encode.forJavaScriptBlock(myAccountPortalUrl)%>');
 
             if(navigator ){
                 let userAgent = navigator.userAgent;
